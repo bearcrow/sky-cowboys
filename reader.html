@@ -6,24 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sky Cowboys</title>
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript">
+	content_manifest={
+		chapters:{
+			"1":{
+				pages:2
+			}
+		}
+	}
+	
+	function onBodyLoaded(){
+		var urlParams = new URLSearchParams(window.location.search);
+		var chapter = urlParams.get('chapter');
+		if(chapter == undefined) chapter = "Not Found";
+		var chapterPadded = String(chapter).padStart(2, '0');
+		var chapterPath = "media/images/chapters/"+chapterPadded;
+		var titlePage = document.createElement("img");
+		titlePage.classList.add("comic-page");
+		titlePage.src = chapterPath+"/c"+chapterPadded+"_cover.png";
+		document.getElementById("chapter_content").appendChild(titlePage);
+		
+		for(var i = 1; i <= content_manifest.chapters[chapter].pages; i++){
+			var page = document.createElement("img");
+			var pagePadded = String(i).padStart(2, '0');
+			page.classList.add("comic-page");
+			page.src=chapterPath+"/c"+chapterPadded+"_p"+pagePadded+".png";
+			document.getElementById("chapter_content").appendChild(page);
+		}
+		document.getElementById("chapter_title").innerText = "Chapter " + chapter;
+	}
+  </script>
+  
 </head>
-<body>
-  <header class="site-banner">
+<body onload="onBodyLoaded()">
+  <header class="content site-banner">
   </header>
   <main class="content">
     <div id="reader_content_wrap">
-	<h1 id="chapter_title"></h1>
-	<img id="chapter_image"></img>
-	<script type="text/javascript">
-		var urlParams = new URLSearchParams(window.location.search);
-		var chapter = urlParams.get('chapter');
-		if(chapter == undefined) chapter = "Not Found"
-		document.getElementById("chapter_image").src = "/media/images/chapter"+chapter+".png";
-		document.getElementById("chapter_title").innerText = "Chapter " + chapter;
-	</script>
+	<div id="top_nav" class="nav">
+		<div id="nav_left" class="inline nav_button" onclick="prevChapter()">&lt;</div>
+		<h1 id="chapter_title" class="inline"></h1>
+		<div id="nav_right" class="inline nav_button" onclick="nextChapter()">&gt;</div>
+	</div>
+	<div id="chapter_content">
+	</div>
+	</div>
+	<div id="bottom_nav" class="nav">
+		<div id="nav_left" class="inline nav_button" onclick="prevChapter()">&lt;</div>
+		<h1 class="inline"> ~~~~ </h1>
+		<div id="nav_right" class="inline nav_button" onclick="nextChapter()">&gt;</div>
 	</div>
   </main>
-  <footer class="site-footer">
+  <footer class="content site-footer">
     <p>&copy; Copyright 2023 My Website</p>
   </footer>
 </body>
