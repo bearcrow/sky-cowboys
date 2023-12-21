@@ -7,6 +7,7 @@
   <title>Sky Cowboys</title>
   <link rel="icon" type="image/x-icon" href="/media/images/favicon.ico">
   <link rel="stylesheet" href="styles.css">
+  <script src="/js/page_builder.js"></script>
   <script type="text/javascript">
 	content_manifest={
 		chapters:{
@@ -40,8 +41,7 @@
   
 </head>
 <body onload="onBodyLoaded()">
-  <header class="content site-banner">
-  </header>
+  <header-component></header-component>
   <main class="content">
     <div id="reader_content_wrap">
 	<div id="top_nav" class="nav">
@@ -58,9 +58,7 @@
 		<div id="nav_right" class="inline nav_button" onclick="nextChapter()">&gt;</div>
 	</div>
   </main>
-  <footer class="content site-footer">
-    <p>&copy; Copyright 2023 My Website</p>
-  </footer>
+  <footer-component></footer-component>
 </body>
 </html>
 
