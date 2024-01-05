@@ -5,13 +5,23 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Averia Libre", Tofu;
 }
 
 body {
   background-color: #f5f5f5;
 }
 
+div.box{
+  display:flex;
+  margin-left:auto;
+  margin-right:auto;
+  /* border: 2px solid #000000; */
+  width:fit-content;
+  padding: 10px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
 .site-banner {
   background-color: #333;
   color: #fff;
@@ -29,12 +39,12 @@ body {
   max-width: 1100px;
 }
 #chapter_content{
-	width:900px;
-	margin-left:auto;
-	margin-right:auto;
+  width:900px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .comic-page{
-	width:900px;
+  width:900px;
 }
 .site-footer {
   background-color: #333;
@@ -47,16 +57,16 @@ body {
   margin: 0;
 }
 .inline{
-	display:inline-block;
+  display:inline-block;
 }
 .nav{
-	text-align:center;
-	align:center;
+  text-align:center;
+  align:center;
 }
 .nav_button{
-	padding-left:20px;
-	padding-right:20px;
-	cursor:pointer;
+  padding-left:20px;
+  padding-right:20px;
+  cursor:pointer;
 }
 
 .grid-container {
@@ -74,10 +84,52 @@ body {
   /* border: 1px solid #ccc; /* Add a border to outline each grid item */
 }
 #character_grid div.grid-item{
-	background-image:url("/media/images/characters/CharacterTile_Mystery_400px.png");
-	background-size: contain;
+  background-image:url("/media/images/characters/CharacterTile_Mystery_400px.png");
+  background-size: contain;
 }
 #character_grid div.grid-item img{
-	width:320px;
-	height:320px;
+  width:320px;
+  height:320px;
+}
+.main-navigation-pane {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-nav-button-list {
+  width:100%;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between; /* Apply justify-content here */
+}
+
+
+.main-nav-button a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: #FFFFFF; /* Adjust text color as needed */
+  /* font-family: 'Tangerine', serif; */
+}
+
+.main-nav-button a > img {
+  height: 75px;
+  object-fit: cover;
+}
+
+.main-nav-button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  text-align: center;
+}
+.p-heading{
+  font-style:italic;
 }
