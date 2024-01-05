@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky Cowboys</title>
+  <link rel="icon" type="image/x-icon" href="/media/images/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Libre">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/js/page_builder.js"></script>
+  <script type="text/javascript">
+    function onBodyLoaded(){
+      const myPromise = new Promise(async (resolve,reject) => {
+        try {
+          const response = await fetch("characters/manifest.json");
+          const data = await response.json();
+          resolve(data);
+        } catch (error) {
+          console.error("Error fetching or parsing character manifest:", error);
+          reject(error); // Re-throw the error for handling in the calling code
+        }
+      });
+      myPromise.then(
+        function(data){
+          var urlParams = new URLSearchParams(window.location.search);
+          var character_name = urlParams.get('character');
+          if(!(character_name in data.characters)){
+            character="unknown";
+          }
+          var character = data.characters[character_name];
+          document.getElementById("character_name").innerHTML = character.name + " & " + character.pegasus;
+          document.getElementById("description").innerHTML = character.description;
+          document.getElementById("character_image").src = "media/images/characters/"+character_name+"_dossier.png";
+        },
+        function(error){
+          console.log("Could not load characters.");
+        }
+      )
+      
+    
+    }
+  </script>
+</head>
+<body onload="onBodyLoaded()">
+  <header-component></header-component>
+  <main class="content">
+  <site-nav></site-nav>
+  <div class="box"><h1 id="character_name"> </h1></div>
+  <div class="box"><img id="character_image" style="object-fit:cover;max-width:1000px;"> </img></div>
+  <div class="box"><p id="description"></p></div>
+  </main>
+  <footer-component></footer-component>
+</body>
+</html>

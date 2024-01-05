@@ -1,0 +1,14 @@
+{
+  "characters":{
+     "unknown":{
+       "name":"Unknown Character",
+       "pegasus":"Mystery Mount",
+       "description":"Woops, we don't know which character you're asking us about. Perhaps go back to the character page and try again!"
+     },
+    "someone":{
+      "name":"Some Great Name",
+      "pegasus":"Some Great Pegasus",
+      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+    }
+  }
+}
