@@ -5,9 +5,29 @@
        "pegasus":"Mystery Mount",
        "description":"Woops, we don't know which character you're asking us about. Perhaps go back to the character page and try again!"
      },
-    "someone":{
-      "name":"Some Great Name",
-      "pegasus":"Some Great Pegasus",
+    "rorek":{
+      "name":"Rorek",
+      "pegasus":"Quicksilver",
+      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+    },
+    "molly":{
+      "name":"Molly",
+      "pegasus":"Skift",
+      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+    },
+    "jesse":{
+      "name":"Jesse",
+      "pegasus":"Sniper",
+      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+    },
+    "lacey":{
+      "name":"Lacey",
+      "pegasus":"Duchess",
+      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+    },
+    "scrubs":{
+      "name":"Scrubs",
+      "pegasus":"Peg",
       "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
     }
   }
