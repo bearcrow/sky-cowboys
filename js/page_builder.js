@@ -2,8 +2,13 @@
 async function include(url, destination){
   const response = await fetch(url);
   const text = await response.text();
-  destination.innerHTML = text;
+  destination.innerHTML = destination.innerHTML + text;
 }
+customElements.define("site-head", class extends HTMLElement {
+  connectedCallback() {
+  include("/site_head.html",document.head);
+  }
+});
 customElements.define("header-component", class extends HTMLElement {
   connectedCallback() {
   include("/header.html",this);
