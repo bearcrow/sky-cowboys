@@ -1,0 +1,36 @@
+<script type="text/javascript">
+function PopulatePosts(){
+    console.log("fetching posts...");
+    const myPromise = new Promise(async (resolve,reject) => {
+    try {
+      const response = await fetch("posts.json");
+      const data = await response.json();
+      resolve(data);
+    } catch (error) {
+      console.error("Error fetching or parsing chapter manifest:", error);
+      reject(error); // Re-throw the error for handling in the calling code
+    }
+  });
+  myPromise.then(
+    function(data){
+      var posts_div = document.getElementById("posts");
+      for(var i, post in data.posts){
+        var post_div = document.createElement("<div>");
+        var title_h = document.createElement("<h1>");
+        title.innerHTML = post.title;
+        post_div.innerHTML = post.content;
+        posts_div.appendChild(post_div);
+      }
+    },
+    function(error){
+      console.log("Could not load chapters.");
+    }
+  );
+}
+</script>
+<div id="posts" class="content posts">
+</div>
+<script type="text/javascript">
+console.log("Loding posts...");
+PopulatePosts();
+</script>

@@ -22,6 +22,12 @@ div.box{
   margin-top:5px;
   margin-bottom:5px;
 }
+div.post{
+  background-color:#fff6d9;
+  padding:10px;
+  border-radius:15px;
+  border: 2px solid #79362a;
+}
 .site-banner {
   background-color: #333;
   color: #fff;
@@ -118,7 +124,7 @@ div.box{
 }
 
 .main-nav-button a > img {
-  height: 75px;
+  height: 65px;
   object-fit: cover;
 }
 
@@ -127,7 +133,7 @@ div.box{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
 }
 .p-heading{
