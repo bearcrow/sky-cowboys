@@ -11,7 +11,12 @@ html, body {
 body {
   background-color: #f5f5f5;
 }
-
+.w20{
+  width:20%;
+}
+.w80{
+  width:80%;
+}
 div.box{
   display:flex;
   margin-left:auto;
@@ -97,6 +102,18 @@ div.post{
   width:320px;
   height:320px;
 }
+div.col-split-container{
+  display:flex;
+  flex-wrap:wrap;
+}
+@media (max-width: 768px) {
+  .col-split-container {
+    flex-direction: column;
+  }
+  .col-split {
+    width: 100%;
+  }
+}
 .main-navigation-pane {
   width: 100%;
   display: flex;
@@ -135,6 +152,18 @@ div.post{
   transform: translate(-50%, -50%);
   font-size: 20px;
   text-align: center;
+}
+
+div.side-bar{
+  width:100%;
+  border-radius:15px;
+  padding:0.5rem;
+  background-color:#d3f2ff;
+  border: 2px solid #79362a;
+}
+.side-bar-button-list {
+  width:100%;
+  list-style:none;
 }
 .p-heading{
   font-style:italic;

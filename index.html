@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <script src="/js/page_builder.js"></script>
-  <script src="/js/custom_elements.js"></script>
   <site-head></site-head>
 </head>
 <body>
@@ -10,7 +9,14 @@
   <main class="content">
   <site-nav></site-nav>
   <h1>Sky-Cowboys!</h1>
-  <posts-component></posts-component>
+  <div class="col-split-container">
+    <div class="col-split w20">
+      <side-bar-component></side-bar-component>
+    </div>
+    <div class="col-split w80">
+    <posts-component></posts-component>
+    </div>
+  </div>
   </main>
   <footer-component></footer-component>
 </body>
