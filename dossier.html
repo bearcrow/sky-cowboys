@@ -23,9 +23,11 @@
             character="unknown";
           }
           var character = data.characters[character_name];
-          document.getElementById("character_name").innerHTML = character.name + " & " + character.pegasus;
-          document.getElementById("description").innerHTML = character.description;
-          document.getElementById("character_image").src = "media/images/characters/"+character_name+"_dossier.png";
+          document.getElementById("character_name").innerHTML = character.name;
+          document.getElementById("character_description").innerHTML = character.character_description;
+		  document.getElementById("pegasus_name").innerHTML = character.pegasus;
+		  document.getElementById("pegasus_description").innerHTML = character.pegasus_description;
+          document.getElementById("character_image").src = "media/images/characters/CompactCharacter_Web_v02_"+character_name+".png";
         },
         function(error){
           console.log("Could not load characters.");
@@ -42,7 +44,9 @@
   <site-nav></site-nav>
   <div class="box"><h1 id="character_name"> </h1></div>
   <div class="box"><img id="character_image" style="object-fit:cover;max-width:1000px;"> </img></div>
-  <div class="box"><p id="description"></p></div>
+  <div class="box"><p id="character_description"></p></div>
+  <div class="box"><h2 id="pegasus_name"> </h2></div>
+  <div class="box"><p id="pegasus_description"></p></div>
   </main>
   <footer-component></footer-component>
 </body>

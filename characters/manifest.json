@@ -3,32 +3,38 @@
      "unknown":{
        "name":"Unknown Character",
        "pegasus":"Mystery Mount",
-       "description":"Woops, we don't know which character you're asking us about. Perhaps go back to the character page and try again!"
+       "character_description":"Woops, we don't know which character you're asking us about. Perhaps go back to the character page and try again!",
+	   "pegasus_description":"Neiiiiigh!"
      },
     "rorek":{
-      "name":"Rorek",
+      "name":"Rorek Matalutke",
       "pegasus":"Quicksilver",
-      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+      "character_description":"Rorek has decades of experience as both a nybak herder and as a family man. He’s kind hearted - some might call him soft - but he doesn't coddle. A firm-but-gentle nature paired with his vast depth of knowledge makes him an excellent posse leader.  If anyone can show Molly the ropes, it’s Rorek.",
+	  "pegasus_description":"One of the best of the renowned Matalutke broadwings. He’s agreeable, friendly, well-behaved and extremely talented in the air; a real testament to Rorek’s skill in training and his good nature with animals."
     },
     "molly":{
-      "name":"Molly",
+      "name":"Molly Shepherd",
       "pegasus":"Skift",
-      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+      "character_description":"Molly is a college student at Woodloch Academy. She loves research and learning but longs to get off the campus grounds and explore the world. She grew up in the town of Carver Canyon - a robust but small waystop point for pilots heading north from Slipshod. As a little girl, she met many pilots and ever since then has dreamed of getting her own pegasus and flying across the region making new scientific discoveries. But up until now, she’s only has book-learning under her belt.",
+	  "pegasus_description":"Skift is a 15-year-old broadwing. He’s been around the block and then some, being used for many different jobs by a handful of pilots before Molly finds him. He’s bland, not very fast, and has developed a stubborn streak. After changing hands so many times, he’s even less eager to please, hence why he’s at yet another auction. But Rorek can see his potential even though Molly will have to work hard to win Skift’s trust."
     },
     "jesse":{
-      "name":"Jesse",
+      "name":"Jesse Dunn",
       "pegasus":"Sniper",
-      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+      "character_description":"Jesse is a highly skilled pilot and is a Boltslayer to boot. Boltslayers specialize in tracking and hunting the massive flying leviathans known as Lightning Fish. It’s extremely dangerous and requires a highly skilled, highly courageous pilot. The tattoos on Jesse’s arms tell the stories of her successful hunts and she’s got the attitude to match. She’s got very little patience for anyone who’s less competent in the air than herself and makes sport of picking on any greenhorn she can find. Molly is, unfortunately, in her crosshairs.",
+	  "pegasus_description":"Skift is a 15-year-old broadwing. He’s been around the block and then some, being used for many different jobs by a handful of pilots before Molly finds him. He’s bland, not very fast, and has developed a stubborn streak. After changing hands so many times, he’s even less eager to please, hence why he’s at yet another auction. But Rorek can see his potential even though Molly will have to work hard to win Skift’s trust."
     },
     "lacey":{
-      "name":"Lacey",
+      "name":"Lacey Miller",
       "pegasus":"Duchess",
-      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+      "character_description":"Lacey is one of Molly’s classmates. She’s a fledged pilot, owns a well-bred pegasus and often travels off-campus. Molly is envious of her freedom to go where she pleases, but thinks that Lacey should be using that advantage to do more research instead of just showing off and looking important.",
+	  "pegasus_description":"This well-bred 8-year-old mare is in her prime and as prissy as Lacey is, but in a pinch is worth her salt. She’s a highly esteemed Matalutke broadwing, afterall."
     },
     "scrubs":{
       "name":"Scrubs",
       "pegasus":"Peg",
-      "description":"This pilot is like, seriously awesome. And that's not all - their pegasus is also like the absolute best!"
+      "character_description":"A ruthless bandit, Scrubs is cunning enough to have survived an outlaw life for so long. He has no compunction about killing, looting, or stealing as long as he gets what he wants - enough coin to live another day and the satisfaction of proving his subjugation over others by robbing them blind.",
+	  "pegasus_description":"This mare is gorgeous, expensive, and mean as hell. Scrubs stole her in a high-profile stunt but her original owners didn’t try too hard to get her back. Peg will take every opportunity to bite or kick Scrubs, who responds with heavy aggression to force her into submission. And yet neither would be able to find any other pilot or pegasus to tolerate either of them."
     }
   }
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/js/page_builder.js"></script>
+  <site-head></site-head>
+  <script type="text/javascript">
+    function onBodyLoaded(){
+      console.log("getting chapters...");
+      const myPromise = new Promise(async (resolve,reject) => {
+        try {
+          const response = await fetch("chapters/manifest.json");
+          const data = await response.json();
+          resolve(data);
+        } catch (error) {
+          console.log("Error fetching or parsing chapter manifest:", error);
+          reject(error); // Re-throw the error for handling in the calling code
+        }
+      });
+      myPromise.then(
+        function(data){
+      console.log(data);
+          for(var cnum in data.chapters){
+            var chapter = data.chapters[cnum];
+            var chapter_wrap = document.createElement("div");
+            chapter_wrap.innerHTML = "<a href='/reader.html?chapter="+cnum+"'><span class = 'p-heading'>"+cnum+" : " + chapter.title + "</span></a>";
+            document.getElementById("chapter_list").appendChild(chapter_wrap);
+            
+          }
+        },
+        function(error){
+          console.log("Could not load chapters.");
+        }
+      )
+      
+    
+    }
+  </script>
+</head>
+<body onload="onBodyLoaded()">
+  <header-component></header-component>
+  <main class="content">
+  <site-nav></site-nav>
+  <h1>Chapters</h1>
+  <div id="chapter_list"></div>
+  <!-- <a href="/reader.html?chapter=1"><span class = "p-heading"> Chapter 1: The First Chapter</span></a> -->
+  
+  </main>
+  <footer-component></footer-component>
+</body>
+</html>
