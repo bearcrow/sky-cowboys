@@ -7,14 +7,15 @@ function PopulatePosts(){
       const data = await response.json();
       resolve(data);
     } catch (error) {
-      console.error("Error fetching or parsing chapter manifest:", error);
+      console.error("Error fetching or parsing posts:", error);
       reject(error); // Re-throw the error for handling in the calling code
     }
   });
   myPromise.then(
     function(data){
       var posts_div = document.getElementById("posts");
-      for(var i, post in data.posts){
+      for(var i in data.posts){
+        var post = data.posts[i];
         var post_div = document.createElement("<div>");
         var title_h = document.createElement("<h1>");
         title.innerHTML = post.title;

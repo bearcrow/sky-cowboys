@@ -7,9 +7,23 @@ html, body {
   padding: 0;
   font-family: "Averia Libre", Tofu;
 }
+html.teaser{
+  height:100%;
+}
+
+body.teaser{
+  height:100%;
+  display:flex; 
+  align-items:center;
+}
 
 body {
   background-color: #f5f5f5;
+  background-image: url("media/images/ui/backdrop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:#FFFFFF;
 }
 .w20{
   width:20%;
