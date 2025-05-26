@@ -33,7 +33,7 @@ body {
   min-width: 100px; /* Example minimum width */
   height:90%;
   width:auto;
-  
+  filter: drop-shadow(-10px 10px 14px black);
 }
 .w20{
   width:20%;
