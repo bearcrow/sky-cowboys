@@ -62,16 +62,25 @@ div.post{
   color: #fff;
   padding: 20px;
   text-align: center;
-  background-image: url('media/images/seriesbanner_extra-long_smallsize_v03.png');
+  background-image: url('media/images/ui/SeriesBanner_Website.png');
   background-size: cover;
   width:100%;
-  height:300px;
+  height:100%;
+  min-height:400px;
+  position:relative;
 }
 
 .content {
   padding: 20px;
   margin: 0 auto;
   max-width: 1100px;
+  background-color: #231e16;
+}
+.teaser .content{
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1100px;
+  background-color: transparent;
 }
 #chapter_content{
   width:900px;
@@ -138,9 +147,17 @@ div.col-split-container{
     width: 100%;
   }
 }
+site-nav{
+  position: absolute; /* Add this */
+  bottom: 0; /* Add this to place it at the bottom */
+  left: 0; /* Optional: adjust as needed for horizontal positioning */
+  right: 0;
+}
 .main-navigation-pane {
   width: 100%;
+  height:300px;
   display: flex;
+  flex-direction: column; 
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -149,10 +166,13 @@ div.col-split-container{
 .main-nav-button-list {
   width:100%;
   display: flex;
+  flex-wrap:wrap;
   list-style: none;
   margin: 0;
   padding: 0;
   justify-content: space-between; /* Apply justify-content here */
+  margin-top:auto;
+  margin-bottom:0;
 }
 
 
@@ -160,7 +180,7 @@ div.col-split-container{
   display: block;
   position: relative;
   text-decoration: none;
-  color: #FFFFFF; /* Adjust text color as needed */
+  color: #FFFFFF00; /* Adjust text color as needed */
   /* font-family: 'Tangerine', serif; */
 }
 
