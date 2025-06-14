@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/page_builder.js"></script>
+    <site-head></site-head>
+    <script type="text/javascript">
+      function getLatestChapter(manifest) {
+        var latest_chapter = -1;
+        for (var i in manifest.chapters) {
+          if (parseInt(i) > latest_chapter) {
+            latest_chapter = i;
+          }
+        }
+        return latest_chapter;
+      }
+      function onBodyLoaded() {
+        console.log("getting gallery items...");
+        const myPromise = new Promise(async (resolve, reject) => {
+          try {
+            const response = await fetch("gallery/manifest.json");
+            const data = await response.json();
+            resolve(data);
+          } catch (error) {
+            console.error("Error fetching or parsing chapter manifest:", error);
+            reject(error); // Re-throw the error for handling in the calling code
+          }
+        });
+        myPromise.then(
+          function (data) {
+            console.log("Found " + data.items.length + " items.");
+            for (var i = 1; i <= data.items.length; i++) {
+              let galleryItem = document.createElement("img");
+              galleryItem.classList.add("gallery-item");
+              galleryItem.src = data.items[i];
+              document
+                .getElementById("gallery_content")
+                .appendChild(galleryItem);
+            }
+          },
+          function (error) {
+            console.log("Could not load gallery.");
+          }
+        );
+      }
+    </script>
+  </head>
+  <body onload="onBodyLoaded()">
+    <header-component></header-component>
+    <main class="content">
+      <h1>Gallery</h1>
+      <div id="gallery_content"></div>
+    </main>
+    <footer-component></footer-component>
+  </body>
+</html>

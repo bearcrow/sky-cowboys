@@ -2,19 +2,20 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: "Averia Libre", Tofu;
 }
-html.teaser{
-  height:100%;
+html.teaser {
+  height: 100%;
 }
 
-body.teaser{
-  height:100%;
-  display:flex; 
-  align-items:center;
+body.teaser {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color:#FFFFFF;
+  color: #ffffff;
 }
 #launch_poster {
   display: block; /* Needed to allow margin auto centering */
@@ -31,64 +32,68 @@ body {
   margin-right: auto;
   min-height: 150px; /* Example minimum height */
   min-width: 100px; /* Example minimum width */
-  height:90%;
-  width:auto;
+  height: 90%;
+  width: auto;
   filter: drop-shadow(-10px 10px 14px black);
 }
-.w20{
-  width:20%;
+.w20 {
+  width: 20%;
 }
-.w80{
-  width:80%;
+.w80 {
+  width: 80%;
 }
-div.box{
-  display:flex;
-  margin-left:auto;
-  margin-right:auto;
+div.box {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
   /* border: 2px solid #000000; */
-  width:fit-content;
+  width: fit-content;
   padding: 10px;
-  margin-top:5px;
-  margin-bottom:5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-div.post{
-  background-color:#fff6d9;
-  padding:10px;
-  border-radius:15px;
+div.post {
+  background-color: #fff6d9;
+  padding: 10px;
+  border-radius: 15px;
   border: 2px solid #79362a;
+}
+.site-banner-bg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .site-banner {
   background-color: #333;
   color: #fff;
-  padding: 20px;
   text-align: center;
-  background-image: url('media/images/ui/SeriesBanner_Website.png');
   background-size: cover;
-  width:100%;
-  height:100%;
-  min-height:400px;
-  position:relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
 }
-
-.content {
+main {
   padding: 20px;
+}
+.content {
   margin: 0 auto;
   max-width: 1100px;
   background-color: #231e16;
 }
-.teaser .content{
+.teaser .content {
   padding: 20px;
   margin: 0 auto;
   max-width: 1100px;
   background-color: transparent;
 }
-#chapter_content{
-  width:900px;
-  margin-left:auto;
-  margin-right:auto;
+#chapter_content {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.comic-page{
-  width:900px;
+.comic-page {
+  width: 900px;
 }
 .site-footer {
   background-color: #333;
@@ -100,17 +105,17 @@ div.post{
 .site-footer p {
   margin: 0;
 }
-.inline{
-  display:inline-block;
+.inline {
+  display: inline-block;
 }
-.nav{
-  text-align:center;
-  align:center;
+.nav {
+  text-align: center;
+  align: center;
 }
-.nav_button{
-  padding-left:20px;
-  padding-right:20px;
-  cursor:pointer;
+.nav_button {
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
 }
 
 .grid-container {
@@ -118,7 +123,7 @@ div.post{
   grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
   grid-row-gap: 30px; /* Add some spacing between grid items */
   width: 1100px; /* Ensure the grid fits within a reasonable viewport width */
-  margin:0 auto; /* Center the grid horizontally */
+  margin: 0 auto; /* Center the grid horizontally */
 }
 
 .grid-item {
@@ -127,17 +132,17 @@ div.post{
   /* background-color: #f0f0f0; /* Add a light gray background for visibility */
   /* border: 1px solid #ccc; /* Add a border to outline each grid item */
 }
-#character_grid div.grid-item{
-  background-image:url("/media/images/characters/CharacterTile_Mystery_400px.png");
+#character_grid div.grid-item {
+  background-image: url("/media/images/characters/CharacterTile_Mystery_400px.png");
   background-size: contain;
 }
-#character_grid div.grid-item img{
-  width:320px;
-  height:320px;
+#character_grid div.grid-item img {
+  width: 320px;
+  height: 320px;
 }
-div.col-split-container{
-  display:flex;
-  flex-wrap:wrap;
+div.col-split-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (max-width: 768px) {
   .col-split-container {
@@ -147,7 +152,7 @@ div.col-split-container{
     width: 100%;
   }
 }
-site-nav{
+site-nav {
   position: absolute; /* Add this */
   bottom: 0; /* Add this to place it at the bottom */
   left: 0; /* Optional: adjust as needed for horizontal positioning */
@@ -155,38 +160,44 @@ site-nav{
 }
 .main-navigation-pane {
   width: 100%;
-  height:300px;
+  height: 300px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
 
 .main-nav-button-list {
-  width:100%;
+  width: 100%;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
   justify-content: space-between; /* Apply justify-content here */
-  margin-top:auto;
-  margin-bottom:0;
+  margin-top: auto;
+  margin-bottom: 0;
 }
-
 
 .main-nav-button a {
   display: block;
   position: relative;
   text-decoration: none;
-  color: #FFFFFF00; /* Adjust text color as needed */
+  color: #ffffff00; /* Adjust text color as needed */
   /* font-family: 'Tangerine', serif; */
 }
 
 .main-nav-button a > img {
-  height: 65px;
+  display: block; /* Ensures proper block-level behavior for width/height */
+  width: 100%; /* Image takes full width of its 'a' container */
+  max-height: 65px; /* Original height becomes max, allowing it to shrink */
   object-fit: cover;
+}
+@media (max-width: 500px) {
+  .main-nav-button a > img {
+    max-height: 45px; /* Original height becomes max, allowing it to shrink */
+  }
 }
 
 .main-nav-button-text {
@@ -198,19 +209,23 @@ site-nav{
   text-align: center;
 }
 
-div.side-bar{
-  width:100%;
-  border-radius:15px;
-  padding:0.5rem;
-  background-color:#d3f2ff;
+div.side-bar {
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.5rem;
+  background-color: #d3f2ff;
   border: 2px solid #79362a;
 }
 .side-bar-button-list {
-  width:100%;
-  list-style:none;
+  width: 100%;
+  list-style: none;
 }
-.p-heading{
-  font-style:italic;
-  font-size:24px;
-  color:#4f99ee;
+.p-heading {
+  font-style: italic;
+  font-size: 24px;
+  color: #4f99ee;
+}
+img.gallery-item {
+  width: 100%;
+  margin-bottom: 20px;
 }
