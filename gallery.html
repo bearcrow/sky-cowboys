@@ -28,7 +28,7 @@
         myPromise.then(
           function (data) {
             console.log("Found " + data.items.length + " items.");
-            for (var i = 1; i <= data.items.length; i++) {
+            for (var i = 0; i <= data.items.length; i++) {
               let galleryItem = document.createElement("img");
               galleryItem.classList.add("gallery-item");
               galleryItem.src = data.items[i];
