@@ -2,6 +2,18 @@
   box-sizing: border-box;
 }
 
+@import url(https://db.onlinewebfonts.com/c/f55e87ce1d54848017e24963da5b9af4?family=Kiln+Serif+Regular);
+
+@font-face {
+    font-family: "Kiln Serif Regular";
+    src: url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.eot");
+    src: url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.svg#Kiln Serif Regular")format("svg");
+}
+
 html,
 body {
   margin: 0;
@@ -41,6 +53,9 @@ body {
 }
 .w80 {
   width: 80%;
+}
+.kiln{
+  font-family: "Kiln Serif Regular";
 }
 div.box {
   display: flex;
@@ -255,7 +270,7 @@ img.gallery-item {
 }
 
 .footer-follow-text {
-    font-size: 1.5em; 
+    font-size: 2.5em; 
     color: #6ed0e0;
     margin-bottom: 10px;
     font-weight: bold;

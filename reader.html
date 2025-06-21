@@ -48,7 +48,9 @@
                 chapterPath + "/c" + chapterPadded + "_p" + pagePadded + ".png";
               document.getElementById("chapter_content").appendChild(page);
             }
-            document.getElementById("chapter_title").innerText =
+            document.getElementById("chapter_title_top").innerText =
+              "Chapter " + chapter;
+            document.getElementById("chapter_title_bottom").innerText =
               "Chapter " + chapter;
           },
           function (error) {
@@ -66,7 +68,7 @@
           <div id="nav_left" class="inline nav_button" onclick="prevChapter()">
             &lt;
           </div>
-          <h1 id="chapter_title" class="inline"></h1>
+          <h1 id="chapter_title_top" class="inline"></h1>
           <div id="nav_right" class="inline nav_button" onclick="nextChapter()">
             &gt;
           </div>
@@ -74,11 +76,11 @@
         <div id="chapter_content"></div>
       </div>
       <div id="bottom_nav" class="nav">
-        <div id="nav_left" class="inline nav_button" onclick="prevChapter()">
+        <div id="nav_left" class="inline nav_button kiln" onclick="prevChapter()">
           &lt;
         </div>
-        <h1 class="inline">~~~~</h1>
-        <div id="nav_right" class="inline nav_button" onclick="nextChapter()">
+        <h1 id="chapter_title_bottom" class="inline"></h1>
+        <div id="nav_right" class="inline nav_button kiln" onclick="nextChapter()">
           &gt;
         </div>
       </div>
