@@ -132,27 +132,21 @@ main {
   cursor: pointer;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
-  grid-row-gap: 30px; /* Add some spacing between grid items */
-  width: 1100px; /* Ensure the grid fits within a reasonable viewport width */
+.character-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
   margin: 0 auto; /* Center the grid horizontally */
 }
 
-.grid-item {
-  width: 320px;
-  height: 320px;
-  /* background-color: #f0f0f0; /* Add a light gray background for visibility */
-  /* border: 1px solid #ccc; /* Add a border to outline each grid item */
-}
 #character_grid div.grid-item {
   background-image: url("/media/images/characters/CharacterTile_Mystery_400px.png");
   background-size: contain;
 }
 #character_grid div.grid-item img {
-  width: 320px;
-  height: 320px;
+  width: 300px;
+  height: auto;
 }
 div.col-split-container {
   display: flex;
@@ -174,7 +168,6 @@ site-nav {
 }
 .main-navigation-pane {
   width: 100%;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
