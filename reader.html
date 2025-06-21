@@ -4,6 +4,11 @@
     <script src="/js/page_builder.js"></script>
     <site-head></site-head>
     <script type="text/javascript">
+      chapters = null;
+      chapter = null;
+      function goToChapter(cnum){
+        window.location.href = "/reader.html?chapter="+cnum;
+      }
       function getLatestChapter(manifest) {
         var latest_chapter = -1;
         for (var i in manifest.chapters) {
@@ -27,12 +32,14 @@
         });
         myPromise.then(
           function (data) {
+            chapters = data.chapters;
             var urlParams = new URLSearchParams(window.location.search);
-            var chapter = urlParams.get("chapter");
+            chapter = parseInt(urlParams.get("chapter"));
             if (chapter == undefined) chapter = "Not Found";
             if (chapter == "latest") {
               chapter = getLatestChapter(data);
             }
+            console.log("Set chapter to " + chapter);
             var chapterPadded = String(chapter).padStart(2, "0");
             var chapterPath = "media/images/chapters/" + chapterPadded;
             var titlePage = document.createElement("img");
@@ -49,14 +56,21 @@
               document.getElementById("chapter_content").appendChild(page);
             }
             document.getElementById("chapter_title_top").innerText =
-              "Chapter " + chapter;
+             data.chapters[chapter].title;
             document.getElementById("chapter_title_bottom").innerText =
-              "Chapter " + chapter;
+              data.chapters[chapter].title;
           },
           function (error) {
             console.log("Could not load chapters.");
           }
         );
+      }
+      function prevChapter() {
+        goToChapter(Math.max(chapter -1,0));
+      }
+      function nextChapter() {
+        console.log("Going to chapter after " + chapter);
+         goToChapter(Math.min(chapter +1 ,Object.keys(chapters).length));
       }
     </script>
   </head>
