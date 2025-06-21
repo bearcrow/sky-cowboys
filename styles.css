@@ -328,6 +328,17 @@ img.gallery-item {
   color:#231e16
 }
 
+#character_image {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  max-width: 1000px; /* Prevent it from becoming overly large on wide screens */
+  object-fit: cover;
+  margin: 1.5rem auto; /* Add some vertical spacing and center it */
+}
+#character_description{
+  color:#fff4e6;
+}
 #image-overlay {
   position: fixed; /* Stay in place over all content */
   top: 0;

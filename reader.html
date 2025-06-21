@@ -47,10 +47,12 @@
           function (data) {
             chapters = data.chapters;
             var urlParams = new URLSearchParams(window.location.search);
-            chapter = parseInt(urlParams.get("chapter"));
+            chapter = urlParams.get("chapter");
             if (chapter == undefined) chapter = "Not Found";
             if (chapter == "latest") {
               chapter = getLatestChapter(data);
+            }else{
+              chapter = parseInt(chapter);
             }
             console.log("Set chapter to " + chapter);
             var chapterPadded = String(chapter).padStart(2, "0");
