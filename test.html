@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Author</title>
+    <style>
+        /* * Use the 'Inter' font from Google Fonts. This is a nice, clean sans-serif
+         * font that looks similar to the one in the image.
+         */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        /* * Basic setup for the body to make our component look good on the page.
+         * This centers the component and gives the page a neutral background.
+         */
+        body {
+            background-color: #f0f0f0; /* A light gray background for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* * This is the main container for the "About Author" section.
+         * We use Flexbox to easily align the image and the text content.
+         */
+        .about-author-container {
+            display: flex; /* Arranges children (image, text) in a row */
+            align-items: center; /* Vertically centers the items */
+            background-color: #36302C; /* The dark brown background from the image */
+            color: #EFEFEF; /* A light, off-white color for the text */
+            padding: 40px; /* Adds space inside the container */
+            border-radius: 15px; /* Softly rounded corners for the container */
+            max-width: 800px; /* Prevents the container from becoming too wide */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* A subtle shadow for depth */
+        }
+
+        /* * Styling for the profile photo.
+         * We make it circular and give it a defined size.
+         */
+        .profile-photo {
+            width: 150px; /* Sets a fixed width */
+            height: 150px; /* Sets a fixed height */
+            border-radius: 50%; /* This is the magic trick to make the image a circle */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            margin-right: 40px; /* Creates space between the photo and the text */
+            flex-shrink: 0; /* Prevents the image from shrinking if the container is too small */
+        }
+
+        /* * The container for the text elements (header and paragraph).
+         */
+        .about-author-text {
+            display: flex;
+            flex-direction: column; /* Stacks the title and paragraph vertically */
+        }
+        
+        /* * Styling for the main heading "About the Author".
+         */
+        .text-content h2 {
+            margin: 0 0 15px 0; /* Removes default top margin and adds space below */
+            font-size: 28px; /* Larger font size for the title */
+            font-weight: 700; /* Bolder font weight */
+        }
+
+        /* * Styling for the main paragraph text.
+         */
+        .text-content p {
+            margin: 0; /* Removes default paragraph margins */
+            font-size: 16px; /* Standard readable font size */
+            line-height: 1.6; /* Increases space between lines for better readability */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-author-container">
+        
+        <img src="profile_photo.png" alt="Profile illustration of the author, Lauren" class="profile-photo">
+        
+        <div class="text-content">
+            <h2>About the Author</h2>
+            <p>
+                Hi, I'm Lauren, also known as "Larn" online. I'm a
+                concept artist and illustrator from the midwest. I've
+                worked in animation, the equestrian industry (everything
+                from summer camps to dressage show barns). Now I design
+                and make costumes and props in Minnesota. Sky Cowboys is my
+                personal project.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -292,19 +292,20 @@ img.gallery-item {
 .community-section p {
     margin: 0;
 }
-
-.discord-link,
-.patreon-link {
+.link{
     color: #6ed0e0;
     text-decoration: none;
 }
-
-.discord-link:hover,
-.patreon-link:hover {
+.link:hover{
     text-decoration: underline;
 }
 
-  
+.text-justify-center{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+}
 .chapter_nav_item{
   background-size: contain;
   background-position: center;
@@ -358,4 +359,16 @@ img.gallery-item {
   max-height: 95vh; /* Use 95% of viewport height */
   object-fit: contain; /* Maintain aspect ratio without cropping */
   cursor: default; /* Use a normal cursor over the image */
+}
+.about-profile-photo {
+    width: 150px; /* Sets a fixed width */
+    height: 150px; /* Sets a fixed height */
+    border-radius: 50%; /* This is the magic trick to make the image a circle */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-right: 40px; /* Creates space between the photo and the text */
+    flex-shrink: 0; /* Prevents the image from shrinking if the container is too small */
+}
+.about-author-text {
+    display: flex;
+    flex-direction: column; /* Stacks the title and paragraph vertically */
 }
