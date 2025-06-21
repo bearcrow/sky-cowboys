@@ -103,12 +103,12 @@ main {
   background-color: transparent;
 }
 #chapter_content {
-  width: 900px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 .comic-page {
-  width: 900px;
+  width: 100%;
 }
 .site-footer {
   color: #fff;
@@ -236,7 +236,7 @@ div.side-bar {
   width: 100%;
   list-style: none;
 }
-.p-heading {
+.p-chapter_label {
   font-style: italic;
   font-size: 24px;
   color: #4f99ee;
@@ -308,4 +308,28 @@ img.gallery-item {
 .discord-link:hover,
 .patreon-link:hover {
     text-decoration: underline;
+}
+
+  
+.chapter_nav_item{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 120px; /* You can adjust this height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  text-align: center;
+  width:100%;
+  padding:20px;
+}
+.chapter_nav_item_label{
+  /* Use clamp() for responsive font size: clamp(MIN, PREFERRED, MAX) */
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color:#231e16
 }

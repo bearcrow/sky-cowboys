@@ -1,5 +1,9 @@
 {
   "chapters":{
+    "0":{
+      "title":"Prologue",
+      "pages":8
+    },
     "1":{
       "title":"The First Chapter",
       "pages":3

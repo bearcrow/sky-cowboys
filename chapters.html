@@ -4,6 +4,9 @@
   <script src="/js/page_builder.js"></script>
   <site-head></site-head>
   <script type="text/javascript">
+    function goToChapter(cnum){
+      window.location.href = "/reader.html?chapter="+cnum;
+    }
     function onBodyLoaded(){
       console.log("getting chapters...");
       const myPromise = new Promise(async (resolve,reject) => {
@@ -12,27 +15,35 @@
           const data = await response.json();
           resolve(data);
         } catch (error) {
-          console.log("Error fetching or parsing chapter manifest:", error);
+          console.error("Error fetching or parsing chapter manifest:", error);
           reject(error); // Re-throw the error for handling in the calling code
         }
       });
       myPromise.then(
         function(data){
-      console.log(data);
-          for(var cnum in data.chapters){
-            var chapter = data.chapters[cnum];
-            var chapter_wrap = document.createElement("div");
-            chapter_wrap.innerHTML = "<a href='/reader.html?chapter="+cnum+"'><span class = 'p-heading'>"+cnum+" : " + chapter.title + "</span></a>";
-            document.getElementById("chapter_list").appendChild(chapter_wrap);
-            
+          console.log(data);
+          const chapterList = document.getElementById("chapter_list");
+          for(const cnum in data.chapters){
+            const chapter = data.chapters[cnum];
+            const chapter_wrap = document.createElement("div");
+            chapter_wrap.classList.add("chapter_nav_item");
+            chapter_wrap.onclick = () => goToChapter(cnum);
+
+            const chapterPadded = String(cnum % 11).padStart(2, "0");
+            const chapter_bg_url = "media/images/ui/ChapterTitles_" + chapterPadded+ ".png";
+            chapter_wrap.style.backgroundImage = "url('" + chapter_bg_url + "')";
+
+            const label = document.createElement("div");
+            label.classList.add("chapter_nav_item_label", "kiln");
+            label.textContent = cnum + " : " + chapter.title;
+            chapter_wrap.appendChild(label);
+            chapterList.appendChild(chapter_wrap);
           }
         },
         function(error){
           console.log("Could not load chapters.");
         }
       )
-      
-    
     }
   </script>
 </head>
@@ -41,8 +52,7 @@
   <main class="content">
   <h1>Chapters</h1>
   <div id="chapter_list"></div>
-  <!-- <a href="/reader.html?chapter=1"><span class = "p-heading"> Chapter 1: The First Chapter</span></a> -->
-
+  
   </main>
   <footer-component></footer-component>
 </body>
