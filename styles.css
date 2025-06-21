@@ -241,7 +241,9 @@ img.gallery-item {
 }
 
 .divider {
-    margin-bottom: 30px;
+    text-align:center;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .divider img {
@@ -360,15 +362,16 @@ img.gallery-item {
   object-fit: contain; /* Maintain aspect ratio without cropping */
   cursor: default; /* Use a normal cursor over the image */
 }
-.about-profile-photo {
-    width: 150px; /* Sets a fixed width */
-    height: 150px; /* Sets a fixed height */
-    border-radius: 50%; /* This is the magic trick to make the image a circle */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
-    margin-right: 40px; /* Creates space between the photo and the text */
-    flex-shrink: 0; /* Prevents the image from shrinking if the container is too small */
+.about-author-container {
+    padding-left: 3em; /* Adds space inside the container */
+    padding-right: 3em; /* Adds space inside the container */
 }
-.about-author-text {
-    display: flex;
-    flex-direction: column; /* Stacks the title and paragraph vertically */
+
+.about-profile-photo {
+  width:40%;
+  max-width:200px;
+  margin-right:2em;
+  float: left;
+  clip-path: circle(50% at 50% 50%);
+  shape-outside: circle(50%);
 }
