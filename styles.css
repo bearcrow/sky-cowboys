@@ -307,7 +307,7 @@ img.gallery-item {
     align-items: center;
     text-align: center;
 }
-}
+
 .chapter_nav_item{
   background-size: contain;
   background-position: center;
@@ -315,7 +315,6 @@ img.gallery-item {
   min-height: 120px; /* You can adjust this height as needed */
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   margin-bottom: 1rem;
   text-align: center;
