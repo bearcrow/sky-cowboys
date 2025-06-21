@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/page_builder.js"></script>
+    <site-head></site-head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCowboys Map</title>
+    <style>
+      #map-container {
+        margin: 0;
+        overflow: hidden; /* Prevent body scrollbars when map is larger than viewport */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      #map {
+        width: 80vw; /* Adjust as needed */
+        height: 80vh; /* Adjust as needed */
+        border: 4px solid #f0f0f0;
+        overflow: hidden; /* Crucial for panning and zooming */
+        position: relative; /* For positioning the map image */
+        cursor: grab;
+      }
+      #map.grabbing {
+        cursor: grabbing;
+      }
+      #map-image {
+        position: absolute;
+        transform-origin: 0 0; /* Zoom from top-left corner */
+        transition: transform 0.1s ease-out; /* Smooth transitions for programmatic changes */
+        user-select: none; /* Prevent image selection during drag */
+        -webkit-user-drag: none; /* Prevent image ghosting during drag in WebKit */
+      }
+    </style>
+    <script src="js/map.js"></script>
+  </head>
+  <body onload="initMap()">
+    <header-component></header-component>
+    <main class="content">
+      <h1>Sky Cowboys World Map</h1>
+      <div id="map-container">
+        <div id="map">
+          <img
+            id="map-image"
+            src="media/images/map/SCC_Map.png"
+            alt="World Map"
+          />
+        </div>
+      </div>
+    </main>
+    <footer-component></footer-component>
+  </body>
+</html>

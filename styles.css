@@ -2,19 +2,32 @@
   box-sizing: border-box;
 }
 
-html, body {
+@import url(https://db.onlinewebfonts.com/c/f55e87ce1d54848017e24963da5b9af4?family=Kiln+Serif+Regular);
+
+@font-face {
+    font-family: "Kiln Serif Regular";
+    src: url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.eot");
+    src: url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/f55e87ce1d54848017e24963da5b9af4.svg#Kiln Serif Regular")format("svg");
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: "Averia Libre", Tofu;
 }
-html.teaser{
-  height:100%;
+html.teaser {
+  height: 100%;
 }
 
-body.teaser{
-  height:100%;
-  display:flex; 
-  align-items:center;
+body.teaser {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 body {
@@ -23,7 +36,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color:#FFFFFF;
+  color: #ffffff;
 }
 #launch_poster {
   display: block; /* Needed to allow margin auto centering */
@@ -31,78 +44,92 @@ body {
   margin-right: auto;
   min-height: 150px; /* Example minimum height */
   min-width: 100px; /* Example minimum width */
-  height:90%;
-  width:auto;
+  height: 90%;
+  width: auto;
   filter: drop-shadow(-10px 10px 14px black);
 }
-.w20{
-  width:20%;
+.w20 {
+  width: 20%;
 }
-.w80{
-  width:80%;
+.w80 {
+  width: 80%;
 }
-div.box{
-  display:flex;
-  margin-left:auto;
-  margin-right:auto;
+.kiln{
+  font-family: "Kiln Serif Regular";
+}
+div.box {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
   /* border: 2px solid #000000; */
-  width:fit-content;
+  width: fit-content;
   padding: 10px;
-  margin-top:5px;
-  margin-bottom:5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-div.post{
-  background-color:#fff6d9;
-  padding:10px;
-  border-radius:15px;
+div.post {
+  background-color: #fff6d9;
+  padding: 10px;
+  border-radius: 15px;
   border: 2px solid #79362a;
+}
+.site-banner-bg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .site-banner {
   background-color: #333;
   color: #fff;
-  padding: 20px;
   text-align: center;
-  background-image: url('media/images/seriesbanner_extra-long_smallsize_v03.png');
   background-size: cover;
-  width:100%;
-  height:300px;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  position: relative;
 }
-
+main {
+  padding: 20px;
+}
 .content {
+  margin: 0 auto;
+  max-width: 1100px;
+  background-color: #231e16;
+}
+.teaser .content {
   padding: 20px;
   margin: 0 auto;
   max-width: 1100px;
-  height:100%;
+  background-color: transparent;
 }
-#chapter_content{
-  width:900px;
-  margin-left:auto;
-  margin-right:auto;
+#chapter_content {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.comic-page{
-  width:900px;
+.comic-page {
+  width: 100%;
 }
 .site-footer {
-  background-color: #333;
   color: #fff;
-  padding: 10px;
   text-align: center;
+  padding: 20px 0; 
 }
 
 .site-footer p {
   margin: 0;
 }
-.inline{
-  display:inline-block;
+.inline {
+  display: inline-block;
 }
-.nav{
-  text-align:center;
-  align:center;
+.nav {
+  text-align: center;
+  align: center;
 }
-.nav_button{
-  padding-left:20px;
-  padding-right:20px;
-  cursor:pointer;
+.nav_button {
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
 }
 
 .grid-container {
@@ -110,7 +137,7 @@ div.post{
   grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
   grid-row-gap: 30px; /* Add some spacing between grid items */
   width: 1100px; /* Ensure the grid fits within a reasonable viewport width */
-  margin:0 auto; /* Center the grid horizontally */
+  margin: 0 auto; /* Center the grid horizontally */
 }
 
 .grid-item {
@@ -119,17 +146,17 @@ div.post{
   /* background-color: #f0f0f0; /* Add a light gray background for visibility */
   /* border: 1px solid #ccc; /* Add a border to outline each grid item */
 }
-#character_grid div.grid-item{
-  background-image:url("/media/images/characters/CharacterTile_Mystery_400px.png");
+#character_grid div.grid-item {
+  background-image: url("/media/images/characters/CharacterTile_Mystery_400px.png");
   background-size: contain;
 }
-#character_grid div.grid-item img{
-  width:320px;
-  height:320px;
+#character_grid div.grid-item img {
+  width: 320px;
+  height: 320px;
 }
-div.col-split-container{
-  display:flex;
-  flex-wrap:wrap;
+div.col-split-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (max-width: 768px) {
   .col-split-container {
@@ -139,37 +166,56 @@ div.col-split-container{
     width: 100%;
   }
 }
+site-nav {
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+}
 .main-navigation-pane {
   width: 100%;
+  height: 300px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
 
 .main-nav-button-list {
-  width:100%;
+  width: 100%;
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: space-between; /* Apply justify-content here */
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 0;
 }
-
 
 .main-nav-button a {
   display: block;
   position: relative;
   text-decoration: none;
-  color: #FFFFFF; /* Adjust text color as needed */
-  /* font-family: 'Tangerine', serif; */
+  color: #ffffff00; 
 }
 
 .main-nav-button a > img {
-  height: 65px;
+  display: block; 
+  width: 100%;
+  max-height: 65px;
   object-fit: cover;
 }
-
+@media (max-width: 500px) {
+  .main-nav-button a > img {
+    max-height: 40px;
+  }
+  .main-nav-button-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+}
 .main-nav-button-text {
   position: absolute;
   top: 50%;
@@ -179,19 +225,111 @@ div.col-split-container{
   text-align: center;
 }
 
-div.side-bar{
-  width:100%;
-  border-radius:15px;
-  padding:0.5rem;
-  background-color:#d3f2ff;
+div.side-bar {
+  width: 100%;
+  border-radius: 15px;
+  padding: 0.5rem;
+  background-color: #d3f2ff;
   border: 2px solid #79362a;
 }
 .side-bar-button-list {
-  width:100%;
-  list-style:none;
+  width: 100%;
+  list-style: none;
 }
-.p-heading{
-  font-style:italic;
-  font-size:24px;
-  color:#4f99ee;
+.p-chapter_label {
+  font-style: italic;
+  font-size: 24px;
+  color: #4f99ee;
+}
+img.gallery-item {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.divider {
+    margin-bottom: 30px;
+}
+
+.divider img {
+  max-width: 75%;
+  height: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    max-width: 1000px;
+    margin: 0 auto; 
+}
+
+.footer-follow-section {
+    text-align: center;
+    margin-right: 50px;
+}
+
+.footer-follow-text {
+    font-size: 2.5em; 
+    color: #6ed0e0;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: auto;
+    margin-right: 15px; 
+    vertical-align: middle; 
+}
+
+.social-icons a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.community-section {
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.community-section p {
+    margin: 0;
+}
+
+.discord-link,
+.patreon-link {
+    color: #6ed0e0;
+    text-decoration: none;
+}
+
+.discord-link:hover,
+.patreon-link:hover {
+    text-decoration: underline;
+}
+
+  
+.chapter_nav_item{
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 120px; /* You can adjust this height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  text-align: center;
+  width:100%;
+  padding:20px;
+}
+.chapter_nav_item_label{
+  /* Use clamp() for responsive font size: clamp(MIN, PREFERRED, MAX) */
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color:#231e16
 }

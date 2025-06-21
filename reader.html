@@ -1,84 +1,90 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <script src="/js/page_builder.js"></script>
-  <site-head></site-head>
-  <script type="text/javascript">
-  function getLatestChapter(manifest){
-    var latest_chapter = -1;
-    for(var i in manifest.chapters){
-      if(parseInt(i) > latest_chapter){
-        latest_chapter = i;
-      }
-    }
-    return latest_chapter;
-  }
-  function onBodyLoaded(){
-	console.log("getting chapters...");
-	const myPromise = new Promise(async (resolve,reject) => {
-		try {
-		  const response = await fetch("chapters/manifest.json");
-		  const data = await response.json();
-		  resolve(data);
-		} catch (error) {
-		  console.error("Error fetching or parsing chapter manifest:", error);
-		  reject(error); // Re-throw the error for handling in the calling code
-		}
-	  });
-	  myPromise.then(
-      function(data){
-        
-        var urlParams = new URLSearchParams(window.location.search);
-        var chapter = urlParams.get('chapter');
-        if(chapter == undefined) chapter = "Not Found";
-        if(chapter == "latest"){
-          chapter = getLatestChapter(data);
+  <head>
+    <script src="/js/page_builder.js"></script>
+    <site-head></site-head>
+    <script type="text/javascript">
+      function getLatestChapter(manifest) {
+        var latest_chapter = -1;
+        for (var i in manifest.chapters) {
+          if (parseInt(i) > latest_chapter) {
+            latest_chapter = i;
+          }
         }
-        var chapterPadded = String(chapter).padStart(2, '0');
-        var chapterPath = "media/images/chapters/"+chapterPadded;
-        var titlePage = document.createElement("img");
-        titlePage.classList.add("comic-page");
-        titlePage.src = chapterPath+"/c"+chapterPadded+"_cover.png";
-        document.getElementById("chapter_content").appendChild(titlePage);
-        
-        for(var i = 1; i <= data.chapters[chapter].pages; i++){
-          var page = document.createElement("img");
-          var pagePadded = String(i).padStart(2, '0');
-          page.classList.add("comic-page");
-          page.src=chapterPath+"/c"+chapterPadded+"_p"+pagePadded+".png";
-          document.getElementById("chapter_content").appendChild(page);
-        }
-        document.getElementById("chapter_title").innerText = "Chapter " + chapter;
-      },
-      function(error){
-        console.log("Could not load chapters.");
+        return latest_chapter;
       }
-    );
-  }
-  </script>
-  
-</head>
-<body onload="onBodyLoaded()">
-  <header-component></header-component>
-  <main class="content">
-  <site-nav></site-nav>
-    <div id="reader_content_wrap">
-  <div id="top_nav" class="nav">
-    <div id="nav_left" class="inline nav_button" onclick="prevChapter()">&lt;</div>
-    <h1 id="chapter_title" class="inline"></h1>
-    <div id="nav_right" class="inline nav_button" onclick="nextChapter()">&gt;</div>
-  </div>
-  <div id="chapter_content">
-  </div>
-  </div>
-  <div id="bottom_nav" class="nav">
-    <div id="nav_left" class="inline nav_button" onclick="prevChapter()">&lt;</div>
-    <h1 class="inline"> ~~~~ </h1>
-    <div id="nav_right" class="inline nav_button" onclick="nextChapter()">&gt;</div>
-  </div>
-  </main>
-  <footer-component></footer-component>
-</body>
+      function onBodyLoaded() {
+        console.log("getting chapters...");
+        const myPromise = new Promise(async (resolve, reject) => {
+          try {
+            const response = await fetch("chapters/manifest.json");
+            const data = await response.json();
+            resolve(data);
+          } catch (error) {
+            console.error("Error fetching or parsing chapter manifest:", error);
+            reject(error); // Re-throw the error for handling in the calling code
+          }
+        });
+        myPromise.then(
+          function (data) {
+            var urlParams = new URLSearchParams(window.location.search);
+            var chapter = urlParams.get("chapter");
+            if (chapter == undefined) chapter = "Not Found";
+            if (chapter == "latest") {
+              chapter = getLatestChapter(data);
+            }
+            var chapterPadded = String(chapter).padStart(2, "0");
+            var chapterPath = "media/images/chapters/" + chapterPadded;
+            var titlePage = document.createElement("img");
+            titlePage.classList.add("comic-page");
+            titlePage.src = chapterPath + "/c" + chapterPadded + "_cover.png";
+            document.getElementById("chapter_content").appendChild(titlePage);
+
+            for (var i = 1; i <= data.chapters[chapter].pages; i++) {
+              var page = document.createElement("img");
+              var pagePadded = String(i).padStart(2, "0");
+              page.classList.add("comic-page");
+              page.src =
+                chapterPath + "/c" + chapterPadded + "_p" + pagePadded + ".png";
+              document.getElementById("chapter_content").appendChild(page);
+            }
+            document.getElementById("chapter_title_top").innerText =
+              "Chapter " + chapter;
+            document.getElementById("chapter_title_bottom").innerText =
+              "Chapter " + chapter;
+          },
+          function (error) {
+            console.log("Could not load chapters.");
+          }
+        );
+      }
+    </script>
+  </head>
+  <body onload="onBodyLoaded()">
+    <header-component></header-component>
+    <main class="content">
+      <div id="reader_content_wrap">
+        <div id="top_nav" class="nav">
+          <div id="nav_left" class="inline nav_button" onclick="prevChapter()">
+            &lt;
+          </div>
+          <h1 id="chapter_title_top" class="inline"></h1>
+          <div id="nav_right" class="inline nav_button" onclick="nextChapter()">
+            &gt;
+          </div>
+        </div>
+        <div id="chapter_content"></div>
+      </div>
+      <div id="bottom_nav" class="nav">
+        <div id="nav_left" class="inline nav_button kiln" onclick="prevChapter()">
+          &lt;
+        </div>
+        <h1 id="chapter_title_bottom" class="inline"></h1>
+        <div id="nav_right" class="inline nav_button kiln" onclick="nextChapter()">
+          &gt;
+        </div>
+      </div>
+    </main>
+    <footer-component></footer-component>
+  </body>
 </html>
-
-
