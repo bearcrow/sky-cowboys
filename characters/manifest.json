@@ -9,12 +9,12 @@
     "butch": {
       "name": "Butch",
       "pegasus": "Beans",
-      "character_description": "Butch is stoic and no-nonsense. His broadwing, Beans, is small but has a silly streak a mile wide. He’s always getting into everything, much to Butch’s chagrin. These two usually fly in tandem with Conagher and Cornbread."
+      "character_description": "Butch is stoic and no-nonsense. His broadwing, Beans, is small but has a silly streak a mile wide. He's always getting into everything, much to Butch's chagrin. These two usually fly in tandem with Conagher and Cornbread."
     },
     "conagher": {
       "name": "Conagher",
       "pegasus": "Cornbread",
-      "character_description": "Conagher doesn’t ask much of life. He’s easy-going and likes sipping coffee around a waystop campfire. His broadwing, Cornbread, is small but mighty — solid on the ground and in the air...even though he’s buddy sour for Beans."
+      "character_description": "Conagher doesn't ask much of life. He's easy-going and likes sipping coffee around a waystop campfire. His broadwing, Cornbread, is small but mighty — solid on the ground and in the air...even though he's buddy sour for Beans."
     },
     "jesse": {
       "name": "Jesse",
@@ -24,27 +24,27 @@
     "molly":{
       "name":"Molly",
       "pegasus":"Skift",
-      "character_description":"Molly is a recent graduate from Woodloch Academy. Despite her degree and book knowledge, she’s a complete greenhorn when it comes to pilot life. Her broadwing, Skift, has enough experience for the both of them, but he’s got a chip on his shoulder from a hardscrabble life before Molly. She’ll have to work hard earn his trust."
+      "character_description":"Molly is a recent graduate from Woodloch Academy. Despite her degree and book knowledge, she's a complete greenhorn when it comes to pilot life. Her broadwing, Skift, has enough experience for the both of them, but he's got a chip on his shoulder from a hardscrabble life before Molly. She'll have to work hard earn his trust."
     },
     "rev": {
       "name": "Rev",
       "pegasus": "Cat",
-      "character_description": "Rev’s family is from the Sentomia Desert, where it’s more common for pilots to wear a blue sash instead of a blue scarf. He’s soft-spoken but has a sarcastic edge. His pegasus, Cat, is an unusual sight amongst herding posses due to being half longwing. It gives her both a distinct look and long-range advantage over full broadwings."
+      "character_description": "Rev's family is from the Sentomia Desert, where it's more common for pilots to wear a blue sash instead of a blue scarf. He's soft-spoken but has a sarcastic edge. His pegasus, Cat, is an unusual sight amongst herding posses due to being half longwing. It gives her both a distinct look and long-range advantage over full broadwings."
     },
     "rorek": {
       "name": "Rorek",
       "pegasus": "Quicksilver",
-      "character_description": "Rorek has decades of experience as a family man and nymbak herder. A firm-but-gentle nature paired with his vast depth of knowledge makes him an excellent posse leader. His broadwing, Quicksilver, is intuitive and sensible. But like Rorek, don’t let his amiable personality fool you. They can out-fly just about anything as a team."
+      "character_description": "Rorek has decades of experience as a family man and nymbak herder. A firm-but-gentle nature paired with his vast depth of knowledge makes him an excellent posse leader. His broadwing, Quicksilver, is intuitive and sensible. But like Rorek, don't let his amiable personality fool you. They can out-fly just about anything as a team."
     },
     "scrubs": {
       "name": "Scrubs",
       "pegasus": "Peg",
-      "character_description": "Scrubs is a bandit with a notorious reputation. His poncho is made from scarves stolen from his many pilot victims. His ruthlessness is matched only by that of his pegasus. A rare opal broadwing, Peg was a high-profile theft. But given her mean attitude it’s unlikely that her original owners want her back."
+      "character_description": "Scrubs is a bandit with a notorious reputation. His poncho is made from scarves stolen from his many pilot victims. His ruthlessness is matched only by that of his pegasus. A rare opal broadwing, Peg was a high-profile theft. But given her mean attitude it's unlikely that her original owners want her back."
     },
     "silas": {
       "name": "Silas",
       "pegasus": "Buckshot",
-      "character_description": "Silas is high energy & enthusiastic. He’s known for having a pocketful of trinkets he’ll trade for new ones with the kids at settlements. His broadwing, Buckshot, is mellow due to his shortwing half — a cross commonly referred to as a “heavy broadwing”."
+      "character_description": "Silas is high energy & enthusiastic. He's known for having a pocketful of trinkets he'll trade for new ones with the kids at settlements. His broadwing, Buckshot, is mellow due to his shortwing half — a cross commonly referred to as a “heavy broadwing”."
     }
   }
 }
