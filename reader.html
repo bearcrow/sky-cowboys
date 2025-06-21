@@ -9,6 +9,19 @@
       function goToChapter(cnum){
         window.location.href = "/reader.html?chapter="+cnum;
       }
+      function openOverlay(imageUrl) {
+        const overlay = document.getElementById('image-overlay');
+        const overlayImage = document.getElementById('overlay-image');
+        overlayImage.src = imageUrl;
+        overlay.style.display = 'flex';
+      }
+
+      function closeOverlay() {
+        const overlay = document.getElementById('image-overlay');
+        overlay.style.display = 'none';
+        document.getElementById('overlay-image').src = '';
+      }
+
       function getLatestChapter(manifest) {
         var latest_chapter = -1;
         for (var i in manifest.chapters) {
@@ -44,6 +57,7 @@
             var chapterPath = "media/images/chapters/" + chapterPadded;
             var titlePage = document.createElement("img");
             titlePage.classList.add("comic-page");
+            titlePage.onclick = function() { openOverlay(this.src); };
             titlePage.src = chapterPath + "/c" + chapterPadded + "_cover.png";
             document.getElementById("chapter_content").appendChild(titlePage);
 
@@ -53,6 +67,7 @@
               page.classList.add("comic-page");
               page.src =
                 chapterPath + "/c" + chapterPadded + "_p" + pagePadded + ".png";
+              page.onclick = function() { openOverlay(this.src); };
               document.getElementById("chapter_content").appendChild(page);
             }
             document.getElementById("chapter_title_top").innerText =
@@ -100,5 +115,8 @@
       </div>
     </main>
     <footer-component></footer-component>
+    <div id="image-overlay" onclick="closeOverlay()">
+      <img id="overlay-image" src="" alt="Focused comic page" onclick="event.stopPropagation()">
+    </div>
   </body>
 </html>
