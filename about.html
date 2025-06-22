@@ -3,8 +3,13 @@
   <head>
     <script src="/js/page_builder.js"></script>
     <site-head></site-head>
+    <script type="text/javascript">
+      function onBodyLoaded() {
+        finalizePageLoad(); // Wait for components and reveal the page
+      }
+    </script>
   </head>
-  <body>
+  <body onload="onBodyLoaded()" style="background-color: #231e16; visibility:hidden;">
     <header-component active-nav="about"></header-component>
     <main class="content">
       <div class="text-justify-center" style="padding:3em; font-size:1.2em">

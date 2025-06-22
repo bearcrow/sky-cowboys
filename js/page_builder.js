@@ -1,4 +1,25 @@
 
+// A set to track all loading promises for the initial page load.
+const initialLoadPromises = new Set();
+
+// A function to register a promise that must complete before the page is shown.
+function registerInitialLoad(promise) {
+    initialLoadPromises.add(promise);
+    // When the promise finishes, remove it from the set.
+    promise.finally(() => {
+        initialLoadPromises.delete(promise);
+    });
+}
+
+// This function will be called to wait for all initial loads and then show the page.
+async function finalizePageLoad() {
+    // Wait for all registered promises to settle.
+    await Promise.allSettled([...initialLoadPromises]);
+    // Use requestAnimationFrame to ensure the fade-in happens smoothly after all content is ready.
+    document.body.style.visibility = "visible";
+    
+}
+
 async function include(url, destination){
   const response = await fetch(url);
   const text = await response.text();
@@ -21,7 +42,9 @@ customElements.define("site-head", class extends HTMLElement {
 });
 customElements.define("header-component", class extends HTMLElement {
   async connectedCallback() {
-    await include("/header.html", this);
+    const loadPromise = include("/header.html", this);
+    registerInitialLoad(loadPromise);
+    await loadPromise;
 
     // Pass the active-nav attribute down to the site-nav component
     const siteNavElement = this.querySelector('site-nav');
@@ -35,12 +58,13 @@ customElements.define("header-component", class extends HTMLElement {
 
 customElements.define("site-nav", class extends HTMLElement {
   async connectedCallback() {
-    await include("/site_nav.html", this);
+    const loadPromise = include("/site_nav.html", this);
+    registerInitialLoad(loadPromise);
+    await loadPromise;
 
     // Once the nav content is loaded, check for an active-nav attribute
     // and call setNav to highlight the correct button.
     const activeNav = this.getAttribute('active-nav');
-    
     if (activeNav) {
       setNav(activeNav);
     }
@@ -48,14 +72,18 @@ customElements.define("site-nav", class extends HTMLElement {
 });
 
 customElements.define("side-bar-component", class extends HTMLElement {
-  connectedCallback() {
-  include("/side_bar.html",this);
+  async connectedCallback() {
+    const loadPromise = include("/side_bar.html",this);
+    registerInitialLoad(loadPromise);
+    await loadPromise;
   }
 });
 
 customElements.define("footer-component", class extends HTMLElement {
-  connectedCallback() {
-  include("/footer.html",this);
+  async connectedCallback() {
+    const loadPromise = include("/footer.html",this);
+    registerInitialLoad(loadPromise);
+    await loadPromise;
   }
 });
 

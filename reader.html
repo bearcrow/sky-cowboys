@@ -43,6 +43,8 @@
             reject(error); // Re-throw the error for handling in the calling code
           }
         });
+        registerInitialLoad(myPromise);
+
         myPromise.then(
           function (data) {
             chapters = data.chapters;
@@ -81,6 +83,7 @@
             
           }
         );
+        finalizePageLoad();
       }
       function prevChapter() {
         goToChapter(Math.max(chapter -1,0));
@@ -91,7 +94,7 @@
       }
     </script>
   </head>
-  <body onload="onBodyLoaded()">
+  <body onload="onBodyLoaded()" style="background-color: #231e16; visibility:hidden;">
     <header-component active-nav="chapters"></header-component>
     <main class="content">
       <div id="reader_content_wrap">

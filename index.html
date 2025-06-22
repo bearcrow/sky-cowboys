@@ -3,8 +3,14 @@
 <head>
   <script src="/js/page_builder.js"></script>
   <site-head></site-head>
+  <script>
+    function onBodyLoaded() {
+      finalizePageLoad(); // Wait for components and reveal the page
+    }
+  </script>
 </head>
-<body class="teaser">
+<body class="teaser" onload="onBodyLoaded()" style="background-color: #231e16; visibility:hidden;">
+  <header-component></header-component>
   <main class="content" style="height:100%">
     <img id="launch_poster" src="/media/images/ui/Series_LaunchPoster_SiteFormatted.png" alt="Sky Cowboys: Greenhorn Trail Launch Poster">
   </main>
