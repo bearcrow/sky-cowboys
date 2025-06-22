@@ -78,12 +78,12 @@
              data.chapters[chapter].title;
             document.getElementById("chapter_title_bottom").innerText =
               data.chapters[chapter].title;
+            finalizePageLoad();
           },
           function (error) {
             
           }
         );
-        finalizePageLoad();
       }
       function prevChapter() {
         goToChapter(Math.max(chapter -1,0));

@@ -15,25 +15,26 @@
           reject(error); // Re-throw the error for handling in the calling code
         }
       });
+      registerInitialLoad(myPromise);
       myPromise.then(
         function(data){
           var urlParams = new URLSearchParams(window.location.search);
-          var character_name = urlParams.get('character');
-          if(!(character_name in data.characters)){
+          var character_id = urlParams.get('character');
+          if(!(character_id in data.characters)){
             character="unknown";
           }
-          var character = data.characters[character_name];
+          var character = data.characters[character_id];
           document.getElementById("character_name").innerHTML = character.name + " & " + character.pegasus;
           document.getElementById("character_description").innerHTML = character.character_description;
 		      //document.getElementById("pegasus_name").innerHTML = character.pegasus;
 		      //document.getElementById("pegasus_description").innerHTML = character.pegasus_description;
-          document.getElementById("character_image").src = "media/images/characters/SCC_Detailed_"+character_name+".png";
+          document.getElementById("character_image").src = "media/images/characters/SCC_Detailed_"+character.name+".png";
+          finalizePageLoad();
         },
         function(error){
           
         }
       )
-      finalizePageLoad();
     }
   </script>
 </head>
@@ -41,10 +42,12 @@
   <header-component active-nav="characters"></header-component>
   <main class="content">
   <div><h1 id="character_name"> </h1></div>
-  <div><img id="character_image" alt="Character artwork"></div>
   <div ><p id="character_description"></p></div>
+  <div><img id="character_image" alt="Character artwork"></div>
+  <!--
   <div ><h2 id="pegasus_name"> </h2></div>
   <div ><p id="pegasus_description"></p></div>
+  -->
   </main>
   <footer-component></footer-component>
 </body>
