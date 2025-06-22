@@ -1,6 +1,6 @@
 
 function initMap () {
-  const mapElement = document.getElementById('map') // Changed from map-container
+  const mapElement = document.getElementById('map-window') // Changed from map-container
   const mapImage = document.getElementById('map-image')
 
   let scale = 1

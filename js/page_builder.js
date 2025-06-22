@@ -4,20 +4,46 @@ async function include(url, destination){
   const text = await response.text();
   destination.innerHTML = destination.innerHTML + text;
 }
+function setNav(heading){
+  // Highlight the current page's navigation button.
+  console.log("Setting highlight on " + heading);
+  const navButton = document.getElementById(heading);
+  console.log("navButton:" + navButton);
+  if (navButton) {
+    navButton.classList.add('highlight');
+  }
+}
+
 customElements.define("site-head", class extends HTMLElement {
   connectedCallback() {
   include("/site_head.html",document.head);
   }
 });
 customElements.define("header-component", class extends HTMLElement {
-  connectedCallback() {
-  include("/header.html",this);
+  async connectedCallback() {
+    await include("/header.html", this);
+
+    // Pass the active-nav attribute down to the site-nav component
+    const siteNavElement = this.querySelector('site-nav');
+    const activeNav = this.getAttribute('active-nav');
+    console.log("activeNav in header:" + activeNav);
+    if (siteNavElement && activeNav) {
+      siteNavElement.setAttribute('active-nav', activeNav);
+    }
   }
 });
 
 customElements.define("site-nav", class extends HTMLElement {
-  connectedCallback() {
-  include("/site_nav.html",this);
+  async connectedCallback() {
+    await include("/site_nav.html", this);
+
+    // Once the nav content is loaded, check for an active-nav attribute
+    // and call setNav to highlight the correct button.
+    const activeNav = this.getAttribute('active-nav');
+    console.log("activeNav in site-nav:" + activeNav);
+    if (activeNav) {
+      setNav(activeNav);
+    }
   }
 });
 

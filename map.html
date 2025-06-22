@@ -15,7 +15,7 @@
         align-items: center;
         min-height: 100vh;
       }
-      #map {
+      #map-window {
         width: 80vw; /* Adjust as needed */
         height: 80vh; /* Adjust as needed */
         border: 4px solid #f0f0f0;
@@ -23,7 +23,7 @@
         position: relative; /* For positioning the map image */
         cursor: grab;
       }
-      #map.grabbing {
+      #map-window.grabbing {
         cursor: grabbing;
       }
       #map-image {
@@ -37,11 +37,11 @@
     <script src="js/map.js"></script>
   </head>
   <body onload="initMap()">
-    <header-component></header-component>
+    <header-component active-nav="map"></header-component>
     <main class="content">
       <h1>Sky Cowboys World Map</h1>
       <div id="map-container">
-        <div id="map">
+        <div id="map-window">
           <img
             id="map-image"
             src="media/images/map/SCC_Map.png"
