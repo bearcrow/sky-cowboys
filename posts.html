@@ -1,6 +1,6 @@
 <script type="text/javascript">
 function PopulatePosts(){
-    console.log("fetching posts...");
+    
     const myPromise = new Promise(async (resolve,reject) => {
     try {
       const response = await fetch("posts.json");
@@ -24,7 +24,7 @@ function PopulatePosts(){
       }
     },
     function(error){
-      console.log("Could not load chapters.");
+      
     }
   );
 }
@@ -32,6 +32,6 @@ function PopulatePosts(){
 <div id="posts" class="content posts">
 </div>
 <script type="text/javascript">
-console.log("Loding posts...");
+
 PopulatePosts();
 </script>

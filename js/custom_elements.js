@@ -16,7 +16,7 @@ class PostsComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("fetching posts...");
+    
     const myPromise = new Promise(async (resolve,reject) => {
       try {
         const response = await fetch("posts.json");
@@ -33,7 +33,7 @@ class PostsComponent extends HTMLElement {
         var posts_div = document.createElement("div");
         for(var i in data.posts){
           var post = data.posts[i];
-          console.log(post);
+          
           var content_div = document.createElement("div");
           var date_span = document.createElement("span");
           var title_h = document.createElement("h1");
@@ -50,21 +50,21 @@ class PostsComponent extends HTMLElement {
         this.appendChild(posts_div);
       },
       function(error){
-        console.log("Could not load posts.");
+        
       }
     );
   }
 
   disconnectedCallback() {
-    console.log("Custom element removed from page.");
+    
   }
 
   adoptedCallback() {
-    console.log("Custom element moved to new page.");
+    
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
+    
   }
 }
 

@@ -6,9 +6,9 @@ async function include(url, destination){
 }
 function setNav(heading){
   // Highlight the current page's navigation button.
-  console.log("Setting highlight on " + heading);
+  
   const navButton = document.getElementById(heading);
-  console.log("navButton:" + navButton);
+  
   if (navButton) {
     navButton.classList.add('highlight');
   }
@@ -26,7 +26,7 @@ customElements.define("header-component", class extends HTMLElement {
     // Pass the active-nav attribute down to the site-nav component
     const siteNavElement = this.querySelector('site-nav');
     const activeNav = this.getAttribute('active-nav');
-    console.log("activeNav in header:" + activeNav);
+    
     if (siteNavElement && activeNav) {
       siteNavElement.setAttribute('active-nav', activeNav);
     }
@@ -40,7 +40,7 @@ customElements.define("site-nav", class extends HTMLElement {
     // Once the nav content is loaded, check for an active-nav attribute
     // and call setNav to highlight the correct button.
     const activeNav = this.getAttribute('active-nav');
-    console.log("activeNav in site-nav:" + activeNav);
+    
     if (activeNav) {
       setNav(activeNav);
     }
@@ -77,7 +77,7 @@ class PostsComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("fetching posts...");
+    
     const myPromise = new Promise(async (resolve,reject) => {
       try {
         const response = await fetch("posts.json");
@@ -94,7 +94,7 @@ class PostsComponent extends HTMLElement {
         var posts_div = document.createElement("div");
         for(var i in data.posts){
           var post = data.posts[i];
-          console.log(post);
+          
           var content_div = document.createElement("div");
           var date_span = document.createElement("span");
           var title_h = document.createElement("h1");
@@ -111,21 +111,21 @@ class PostsComponent extends HTMLElement {
         this.appendChild(posts_div);
       },
       function(error){
-        console.log("Could not load posts.");
+        
       }
     );
   }
 
   disconnectedCallback() {
-    console.log("Custom element removed from page.");
+    
   }
 
   adoptedCallback() {
-    console.log("Custom element moved to new page.");
+    
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(`Attribute ${name} has changed.`);
+    
   }
 }
 

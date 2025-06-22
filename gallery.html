@@ -14,7 +14,7 @@
         return latest_chapter;
       }
       function onBodyLoaded() {
-        console.log("getting gallery items...");
+        
         const myPromise = new Promise(async (resolve, reject) => {
           try {
             const response = await fetch("gallery/manifest.json");
@@ -27,7 +27,7 @@
         });
         myPromise.then(
           function (data) {
-            console.log("Found " + data.items.length + " items.");
+            
             for (var i = 0; i <= data.items.length; i++) {
               let galleryItem = document.createElement("img");
               galleryItem.classList.add("gallery-item");
@@ -38,7 +38,7 @@
             }
           },
           function (error) {
-            console.log("Could not load gallery.");
+            
           }
         );
       }

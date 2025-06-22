@@ -32,7 +32,7 @@
         return latest_chapter;
       }
       function onBodyLoaded() {
-        console.log("getting chapters...");
+        
         const myPromise = new Promise(async (resolve, reject) => {
           try {
             const response = await fetch("chapters/manifest.json");
@@ -54,7 +54,7 @@
             }else{
               chapter = parseInt(chapter);
             }
-            console.log("Set chapter to " + chapter);
+            
             var chapterPadded = String(chapter).padStart(2, "0");
             var chapterPath = "media/images/chapters/" + chapterPadded;
             var titlePage = document.createElement("img");
@@ -78,7 +78,7 @@
               data.chapters[chapter].title;
           },
           function (error) {
-            console.log("Could not load chapters.");
+            
           }
         );
       }
@@ -86,7 +86,7 @@
         goToChapter(Math.max(chapter -1,0));
       }
       function nextChapter() {
-        console.log("Going to chapter after " + chapter);
+        
          goToChapter(Math.min(chapter +1 ,Object.keys(chapters).length));
       }
     </script>

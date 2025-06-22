@@ -8,7 +8,7 @@
       window.location.href = "/reader.html?chapter="+cnum;
     }
     function onBodyLoaded(){
-      console.log("getting chapters...");
+      
       const myPromise = new Promise(async (resolve,reject) => {
         try {
           const response = await fetch("chapters/manifest.json");
@@ -21,7 +21,7 @@
       });
       myPromise.then(
         function(data){
-          console.log(data);
+          
           const chapterList = document.getElementById("chapter_list");
           for(const cnum in data.chapters){
             const chapter = data.chapters[cnum];
@@ -41,7 +41,7 @@
           }
         },
         function(error){
-          console.log("Could not load chapters.");
+          
         }
       )
     }
