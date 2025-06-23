@@ -91,7 +91,7 @@ main {
 }
 .content {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 980px;
   background-color: #231e16;
 }
 .teaser .content {
@@ -139,7 +139,7 @@ main {
   background-size: contain;
 }
 #character_grid div.grid-item img {
-  width: 300px;
+  width: 280px;
   height: auto;
 }
 div.col-split-container {
@@ -262,7 +262,7 @@ img.gallery-item {
 
 .footer-follow-text {
     font-size: 2.5em; 
-    color: #6ed0e0;
+    color: #28A6E1;
     margin-bottom: 10px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -290,7 +290,7 @@ img.gallery-item {
     margin: 0;
 }
 .link{
-    color: #6ed0e0;
+    color: #28A6E1;
     text-decoration: none;
 }
 .link:hover{
@@ -321,7 +321,7 @@ img.gallery-item {
 }
 .chapter_nav_item_label{
   /* Use clamp() for responsive font size: clamp(MIN, PREFERRED, MAX) */
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: bold;
   letter-spacing: 1px;
   color:#231e16
@@ -370,4 +370,11 @@ img.gallery-item {
   float: left;
   clip-path: circle(50% at 50% 50%);
   shape-outside: circle(50%);
+}
+
+.reader_nav_button{
+  font-size:1.5em;
+  padding-left:2em;
+  padding-right:2em;
+  cursor:pointer;
 }
