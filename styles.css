@@ -15,11 +15,6 @@
 }
 
 html,
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Averia Libre", Tofu;
-}
 html.teaser {
   height: 100%;
 }
@@ -30,14 +25,18 @@ body.teaser {
   align-items: center;
 }
 
-body {
-  background-color: #f5f5f5;
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Averia Libre", Tofu;
+  background-color: #231e16;  
   background-image: url("media/images/ui/backdrop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #ffffff;
 }
+
 #launch_poster {
   display: block; /* Needed to allow margin auto centering */
   margin-left: auto;
@@ -68,7 +67,6 @@ div.box {
   margin-bottom: 5px;
 }
 div.post {
-  background-color: #fff6d9;
   padding: 10px;
   border-radius: 15px;
   border: 2px solid #79362a;
@@ -93,7 +91,7 @@ main {
 }
 .content {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 980px;
   background-color: #231e16;
 }
 .teaser .content {
@@ -141,7 +139,7 @@ main {
   background-size: contain;
 }
 #character_grid div.grid-item img {
-  width: 300px;
+  width: 280px;
   height: auto;
 }
 div.col-split-container {
@@ -214,7 +212,7 @@ site-nav {
   text-align: center;
 }
 .main-nav-button.highlight{
-  filter:drop-shadow(0px 5px 4px black)
+  filter:drop-shadow(0px 5px 4px #3F2B2B)
 }
 div.side-bar {
   width: 100%;
@@ -264,7 +262,7 @@ img.gallery-item {
 
 .footer-follow-text {
     font-size: 2.5em; 
-    color: #6ed0e0;
+    color: #28A6E1;
     margin-bottom: 10px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -292,7 +290,7 @@ img.gallery-item {
     margin: 0;
 }
 .link{
-    color: #6ed0e0;
+    color: #28A6E1;
     text-decoration: none;
 }
 .link:hover{
@@ -307,21 +305,23 @@ img.gallery-item {
 
 .chapter_nav_item{
   background-size: contain;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
-  min-height: 120px; /* You can adjust this height as needed */
+  min-height: 1.5em; /* You can adjust this height as needed */
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 0.1em;
   text-align: center;
   width:100%;
-  padding:20px;
+  min-width:200px;
+  max-width:600px;
+  padding:0.25em;
+  padding-left:1.5em;
 }
 .chapter_nav_item_label{
   /* Use clamp() for responsive font size: clamp(MIN, PREFERRED, MAX) */
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
-  margin-bottom: 10px;
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: bold;
   letter-spacing: 1px;
   color:#231e16
@@ -370,4 +370,11 @@ img.gallery-item {
   float: left;
   clip-path: circle(50% at 50% 50%);
   shape-outside: circle(50%);
+}
+
+.reader_nav_button{
+  font-size:1.5em;
+  padding-left:2em;
+  padding-right:2em;
+  cursor:pointer;
 }

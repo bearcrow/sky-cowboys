@@ -34,8 +34,14 @@
       }
     </style>
     <script src="js/map.js"></script>
+    <script>
+      function onBodyLoaded() {
+        initMap(); // Initialize the map logic
+        finalizePageLoad(); // Wait for components and reveal the page
+      }
+    </script>
   </head>
-  <body onload="initMap()">
+  <body onload="onBodyLoaded()" style="background-color: #231e16; visibility:hidden;">
     <header-component active-nav="map"></header-component>
     <main class="content">
       <h1>Sky Cowboys World Map</h1>

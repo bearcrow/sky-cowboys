@@ -19,6 +19,9 @@
           reject(error); // Re-throw the error for handling in the calling code
         }
       });
+      // Register the page's main data loading promise so the page doesn't appear until it's done.
+      registerInitialLoad(myPromise);
+
       myPromise.then(
         function(data){
           
@@ -35,7 +38,7 @@
 
             const label = document.createElement("div");
             label.classList.add("chapter_nav_item_label", "kiln");
-            label.textContent = cnum + " : " + chapter.title;
+            label.textContent = chapter.title;
             chapter_wrap.appendChild(label);
             chapterList.appendChild(chapter_wrap);
           }
@@ -43,11 +46,14 @@
         function(error){
           
         }
-      )
+      );
+
+      // After all setup is initiated, call the finalizer to wait for all promises and show the page.
+      finalizePageLoad();
     }
   </script>
 </head>
-<body onload="onBodyLoaded()">
+<body onload="onBodyLoaded()" style="background-color: #231e16; visibility:hidden;">
   <header-component active-nav="chapters"></header-component>
   <main class="content">
   <h1>Chapters</h1>
