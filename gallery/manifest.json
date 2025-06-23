@@ -1,11 +1,13 @@
 {
   "items":[
-    "media/images/gallery/SCC_VisDevGallery_CharactersJesse.png",
     "media/images/gallery/SCC_VisDevGallery_CharactersMolly.png",
     "media/images/gallery/SCC_VisDevGallery_CharactersRorek.png",
+    "media/images/gallery/SCC_VisDevGallery_CharactersJesse.png",
     "media/images/gallery/SCC_VisDevGallery_CharactersSkift.png",
-    "media/images/gallery/SCC_VisDevGallery_LightningFish.png",
+    "media/images/gallery/SCC_VisDevGallery_Broadwings.png",
+    "media/images/gallery/SCC_VisDevGallery_Longwings.png",
+    "media/images/gallery/SCC_VisDevGallery_Shortwings.png",
     "media/images/gallery/SCC_VisDevGallery_Nymbak.png",
-    "media/images/gallery/SCC_VisDevGallery_Shortwings.png"
+    "media/images/gallery/SCC_VisDevGallery_LightningFish.png"
   ]
 }
