@@ -9,7 +9,7 @@
     <style>
       #map-container {
         margin: 0;
-        overflow: hidden; /* Prevent body scrollbars when map is larger than viewport */
+        overflow: visible; /* Prevent body scrollbars when map is larger than viewport */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -18,8 +18,7 @@
       #map-window {
         width: 80vw; /* Adjust as needed */
         height: 80vh; /* Adjust as needed */
-        border: 4px solid #f0f0f0;
-        overflow: hidden; /* Crucial for panning and zooming */
+        overflow: visible; /* Crucial for panning and zooming */
         position: relative; /* For positioning the map image */
         cursor: grab;
       }
