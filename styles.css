@@ -279,7 +279,9 @@ img.gallery-item {
     text-decoration: none;
     display: inline-block;
 }
-
+.center-text{
+  text-align:center;
+}
 .community-section {
     text-align: left;
     font-size: 1.1em;
