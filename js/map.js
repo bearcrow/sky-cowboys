@@ -17,12 +17,11 @@ function initMap () {
   let imagePinchFocusX = 0
   let imagePinchFocusY = 0
 
+  // Hide the map until it's properly positioned to prevent a flash of un-styled content.
+  mapImage.style.visibility = 'hidden'
   function updateTransform () {
     mapImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`
   }
-
-  // Set initial transform
-  updateTransform()
 
   // Helper function to calculate distance between two touch points
   function getDistance (p1, p2) {
@@ -40,7 +39,6 @@ function initMap () {
 
   mapElement.addEventListener('mouseup', () => {
     panning = false
-    mapContainer.classList.remove('grabbing')
     mapElement.classList.remove('grabbing')
   })
 
@@ -157,15 +155,16 @@ function initMap () {
     mapElement.classList.remove('grabbing')
   })
 
-  // Load image and set initial size if you want the image to fit initially
-  window.addEventListener('load', () => {
+  // This function calculates the initial scale and position to center the map.
+  function centerMap () {
     const viewportWidth = mapElement.offsetWidth
     const viewportHeight = mapElement.offsetHeight
     const imageWidth = mapImage.naturalWidth
     const imageHeight = mapImage.naturalHeight
 
-    if (imageWidth && imageHeight) {
-      // Calculate scale to fit image within container
+    // Ensure we have valid image dimensions before calculating.
+    if (imageWidth > 0 && imageHeight > 0) {
+      // Calculate scale to fit image within the container, but don't scale up beyond its natural size.
       const scaleX = viewportWidth / imageWidth
       const scaleY = viewportHeight / imageHeight
       scale = Math.min(scaleX, scaleY, 1) // Don't scale up beyond 1 initially
@@ -173,8 +172,14 @@ function initMap () {
       // Center the image
       pointX = (viewportWidth - imageWidth * scale) / 2
       pointY = (viewportHeight - imageHeight * scale) / 2
-
+      
       updateTransform()
+      // Now that the map is centered, make it visible.
+      mapImage.style.visibility = 'visible'
     }
-  })
+  }
+
+  // Center the map once the image is loaded. Handles cached images too.
+  if (mapImage.complete) centerMap()
+  else mapImage.addEventListener('load', centerMap)
 }
