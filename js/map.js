@@ -1,185 +1,202 @@
+function initMap() {
+  const mapElement = document.getElementById('map-window');
+  const mapImage = document.getElementById('map-image');
 
-function initMap () {
-  const mapElement = document.getElementById('map-window') // Changed from map-container
-  const mapImage = document.getElementById('map-image')
-
-  let scale = 1
-  let panning = false
-  let pointX = 0
-  let pointY = 0
-  let start = { x: 0, y: 0 }
+  let scale = 1;
+  let panning = false;
+  let pointX = 0;
+  let pointY = 0;
+  let start = { x: 0, y: 0 };
 
   // Variables for pinch-to-zoom
-  let isPinching = false
-  let initialPinchDistance = 0
-  let initialScale = 1
-  // Store the point on the image that is the center of the pinch
-  let imagePinchFocusX = 0
-  let imagePinchFocusY = 0
+  let isPinching = false;
+  let initialPinchDistance = 0;
+  let initialScale = 1;
+  let imagePinchFocusX = 0;
+  let imagePinchFocusY = 0;
 
-  // Hide the map until it's properly positioned to prevent a flash of un-styled content.
-  mapImage.style.visibility = 'hidden'
-  function updateTransform () {
-    mapImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`
+  mapImage.style.visibility = 'hidden';
+
+  function updateTransform() {
+      mapImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
   }
 
-  // Helper function to calculate distance between two touch points
-  function getDistance (p1, p2) {
-    const dx = p1.clientX - p2.clientX
-    const dy = p1.clientY - p2.clientY
-    return Math.sqrt(dx * dx + dy * dy)
+  function getDistance(p1, p2) {
+      const dx = p1.clientX - p2.clientX;
+      const dy = p1.clientY - p2.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
   }
 
   mapElement.addEventListener('mousedown', e => {
-    e.preventDefault()
-    panning = true
-    mapElement.classList.add('grabbing')
-    start = { x: e.clientX - pointX, y: e.clientY - pointY }
-  })
+      e.preventDefault();
+      panning = true;
+      mapElement.classList.add('grabbing');
+      // Get mouse position relative to the element for accurate panning
+      const rect = mapElement.getBoundingClientRect(); // ✨ NEW
+      const mouseX = e.clientX - rect.left; // ✨ NEW
+      const mouseY = e.clientY - rect.top; // ✨ NEW
+      start = { x: mouseX - pointX, y: mouseY - pointY }; // ✨ MODIFIED
+  });
 
   mapElement.addEventListener('mouseup', () => {
-    panning = false
-    mapElement.classList.remove('grabbing')
-  })
+      panning = false;
+      mapElement.classList.remove('grabbing');
+  });
 
   mapElement.addEventListener('mouseleave', () => {
-    // Optional: stop panning if mouse leaves container
-    if (panning) {
-      panning = false
-      mapElement.classList.remove('grabbing')
-    }
-  })
+      if (panning) {
+          panning = false;
+          mapElement.classList.remove('grabbing');
+      }
+  });
 
   mapElement.addEventListener('mousemove', e => {
-    e.preventDefault()
-    if (!panning) {
-      return
-    }
-    pointX = e.clientX - start.x
-    pointY = e.clientY - start.y
-    updateTransform()
-  })
+      e.preventDefault();
+      if (!panning) {
+          return;
+      }
+      // Get mouse position relative to the element for accurate panning
+      const rect = mapElement.getBoundingClientRect(); // ✨ NEW
+      const mouseX = e.clientX - rect.left; // ✨ NEW
+      const mouseY = e.clientY - rect.top; // ✨ NEW
+      pointX = mouseX - start.x; // ✨ MODIFIED
+      pointY = mouseY - start.y; // ✨ MODIFIED
+      updateTransform();
+  });
 
   mapElement.addEventListener('wheel', e => {
-    e.preventDefault()
-    const xs = (e.clientX - pointX) / scale
-    const ys = (e.clientY - pointY) / scale
-    const delta = e.deltaY > 0 ? 0.9 : 1.1 // Zoom factor
+      e.preventDefault();
+      const rect = mapElement.getBoundingClientRect(); // ✨ NEW
+      // Calculate mouse position RELATIVE to the container element
+      const mouseX = e.clientX - rect.left; // ✨ NEW
+      const mouseY = e.clientY - rect.top; // ✨ NEW
 
-    const prevScale = scale
-    scale *= delta
-    // Clamp scale to avoid zooming too far in or out
-    scale = Math.min(Math.max(0.1, scale), 10)
+      // Find the cursor's position ON THE IMAGE (using relative mouse coords)
+      const xs = (mouseX - pointX) / scale; // ✨ MODIFIED
+      const ys = (mouseY - pointY) / scale; // ✨ MODIFIED
+      const delta = e.deltaY > 0 ? 0.9 : 1.1;
 
-    pointX = e.clientX - xs * scale
-    pointY = e.clientY - ys * scale
+      scale *= delta;
+      scale = Math.min(Math.max(0.1, scale), 10);
 
-    mapImage.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`
-    updateTransform()
-  })
+      // Calculate the new translation to keep the point under the cursor fixed
+      pointX = mouseX - xs * scale; // ✨ MODIFIED
+      pointY = mouseY - ys * scale; // ✨ MODIFIED
+
+      updateTransform();
+  });
 
   // Touch Events
   mapElement.addEventListener('touchstart', e => {
-    e.preventDefault()
-    if (e.touches.length === 1) {
-      panning = true
-      isPinching = false // Ensure not in pinching mode
-      mapElement.classList.add('grabbing')
-      start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY }
-    } else if (e.touches.length === 2) {
-      panning = false // Stop panning if it was active
-      isPinching = true
-      mapElement.classList.remove('grabbing') // Not grabbing when pinching
-      initialPinchDistance = getDistance(e.touches[0], e.touches[1])
-      initialScale = scale
+      e.preventDefault();
+      const rect = mapElement.getBoundingClientRect(); // ✨ NEW
 
-      // Calculate midpoint of touches on the screen
-      const midScreenX = (e.touches[0].clientX + e.touches[1].clientX) / 2
-      const midScreenY = (e.touches[0].clientY + e.touches[1].clientY) / 2
+      if (e.touches.length === 1) {
+          panning = true;
+          isPinching = false;
+          mapElement.classList.add('grabbing');
+          const touchX = e.touches[0].clientX - rect.left; // ✨ NEW
+          const touchY = e.touches[0].clientY - rect.top; // ✨ NEW
+          start = { x: touchX - pointX, y: touchY - pointY }; // ✨ MODIFIED
+      } else if (e.touches.length === 2) {
+          panning = false;
+          isPinching = true;
+          mapElement.classList.remove('grabbing');
+          initialPinchDistance = getDistance(e.touches[0], e.touches[1]);
+          initialScale = scale;
 
-      // Calculate the point on the image under the screen midpoint
-      imagePinchFocusX = (midScreenX - pointX) / scale
-      imagePinchFocusY = (midScreenY - pointY) / scale
-    }
-  })
+          // Calculate midpoint of touches relative to the element
+          const midScreenX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const midScreenY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          const midScreenRelX = midScreenX - rect.left; // ✨ NEW
+          const midScreenRelY = midScreenY - rect.top; // ✨ NEW
+
+          // Calculate the point on the image under the screen midpoint
+          imagePinchFocusX = (midScreenRelX - pointX) / scale; // ✨ MODIFIED
+          imagePinchFocusY = (midScreenRelY - pointY) / scale; // ✨ MODIFIED
+      }
+  });
 
   mapElement.addEventListener('touchmove', e => {
-    e.preventDefault()
-    if (panning && e.touches.length === 1 && !isPinching) {
-      pointX = e.touches[0].clientX - start.x
-      pointY = e.touches[0].clientY - start.y
-      updateTransform()
-    } else if (isPinching && e.touches.length === 2) {
-      const currentPinchDistance = getDistance(e.touches[0], e.touches[1])
-      if (initialPinchDistance === 0) return // Should not happen if correctly initialized
+      e.preventDefault();
+      const rect = mapElement.getBoundingClientRect(); // ✨ NEW
 
-      let newScale = initialScale * (currentPinchDistance / initialPinchDistance)
-      newScale = Math.min(Math.max(0.1, newScale), 10) // Clamp scale
+      if (panning && e.touches.length === 1 && !isPinching) {
+          const touchX = e.touches[0].clientX - rect.left; // ✨ NEW
+          const touchY = e.touches[0].clientY - rect.top; // ✨ NEW
+          pointX = touchX - start.x; // ✨ MODIFIED
+          pointY = touchY - start.y; // ✨ MODIFIED
+          updateTransform();
+      } else if (isPinching && e.touches.length === 2) {
+          const currentPinchDistance = getDistance(e.touches[0], e.touches[1]);
+          if (initialPinchDistance === 0) return;
 
-      // Current midpoint of touches on the screen
-      const currentMidScreenX = (e.touches[0].clientX + e.touches[1].clientX) / 2
-      const currentMidScreenY = (e.touches[0].clientY + e.touches[1].clientY) / 2
+          let newScale = initialScale * (currentPinchDistance / initialPinchDistance);
+          newScale = Math.min(Math.max(0.1, newScale), 10);
 
-      // Adjust pointX and pointY to keep the imagePinchFocus point under the current touch midpoint
-      pointX = currentMidScreenX - imagePinchFocusX * newScale
-      pointY = currentMidScreenY - imagePinchFocusY * newScale
-      scale = newScale
+          // Current midpoint of touches relative to the element
+          const currentMidScreenX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const currentMidScreenY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          const currentMidRelX = currentMidScreenX - rect.left; // ✨ NEW
+          const currentMidRelY = currentMidScreenY - rect.top; // ✨ NEW
 
-      updateTransform()
-    }
-  })
+          // Adjust pointX and pointY
+          pointX = currentMidRelX - imagePinchFocusX * newScale; // ✨ MODIFIED
+          pointY = currentMidRelY - imagePinchFocusY * newScale; // ✨ MODIFIED
+          scale = newScale;
+
+          updateTransform();
+      }
+  });
 
   mapElement.addEventListener('touchend', e => {
-    // e.preventDefault(); // Not always needed for touchend, but can prevent unwanted clicks
-
-    if (isPinching && e.touches.length < 2) {
-      isPinching = false
-      // If one finger remains, transition to panning with that finger
-      if (e.touches.length === 1) {
-        panning = true
-        mapElement.classList.add('grabbing')
-        start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY }
+      if (isPinching && e.touches.length < 2) {
+          isPinching = false;
+          if (e.touches.length === 1) {
+              panning = true;
+              mapElement.classList.add('grabbing');
+              // Update start position for smooth transition from pinch to pan
+              const rect = mapElement.getBoundingClientRect(); // ✨ NEW
+              const touchX = e.touches[0].clientX - rect.left; // ✨ NEW
+              const touchY = e.touches[0].clientY - rect.top; // ✨ NEW
+              start = { x: touchX - pointX, y: touchY - pointY }; // ✨ MODIFIED
+          }
       }
-    }
+      if (e.touches.length === 0) {
+          panning = false;
+          isPinching = false;
+          mapElement.classList.remove('grabbing');
+      }
+  });
 
-    if (e.touches.length === 0) {
-      panning = false
-      isPinching = false
-      mapElement.classList.remove('grabbing')
-    }
-  })
+  mapElement.addEventListener('touchcancel', () => {
+      panning = false;
+      isPinching = false;
+      mapElement.classList.remove('grabbing');
+  });
 
-  mapElement.addEventListener('touchcancel', e => {
-    panning = false
-    isPinching = false
-    mapElement.classList.remove('grabbing')
-  })
+  function centerMap() {
+      const viewportWidth = mapElement.offsetWidth;
+      const viewportHeight = mapElement.offsetHeight;
+      const imageWidth = mapImage.naturalWidth;
+      const imageHeight = mapImage.naturalHeight;
 
-  // This function calculates the initial scale and position to center the map.
-  function centerMap () {
-    const viewportWidth = mapElement.offsetWidth
-    const viewportHeight = mapElement.offsetHeight
-    const imageWidth = mapImage.naturalWidth
-    const imageHeight = mapImage.naturalHeight
+      if (imageWidth > 0 && imageHeight > 0) {
+          const scaleX = viewportWidth / imageWidth;
+          const scaleY = viewportHeight / imageHeight;
+          scale = Math.min(scaleX, scaleY, 1);
 
-    // Ensure we have valid image dimensions before calculating.
-    if (imageWidth > 0 && imageHeight > 0) {
-      // Calculate scale to fit image within the container, but don't scale up beyond its natural size.
-      const scaleX = viewportWidth / imageWidth
-      const scaleY = viewportHeight / imageHeight
-      scale = Math.min(scaleX, scaleY, 1) // Don't scale up beyond 1 initially
+          pointX = (viewportWidth - imageWidth * scale) / 2;
+          pointY = (viewportHeight - imageHeight * scale) / 2;
 
-      // Center the image
-      pointX = (viewportWidth - imageWidth * scale) / 2
-      pointY = (viewportHeight - imageHeight * scale) / 2
-      
-      updateTransform()
-      // Now that the map is centered, make it visible.
-      mapImage.style.visibility = 'visible'
-    }
+          updateTransform();
+          mapImage.style.visibility = 'visible';
+      }
   }
 
-  // Center the map once the image is loaded. Handles cached images too.
-  if (mapImage.complete) centerMap()
-  else mapImage.addEventListener('load', centerMap)
+  if (mapImage.complete) {
+      centerMap();
+  } else {
+      mapImage.addEventListener('load', centerMap);
+  }
 }
