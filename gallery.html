@@ -30,7 +30,7 @@
         myPromise.then(
           function (data) {
             
-            for (var i = 0; i <= data.items.length; i++) {
+            for (var i = 0; i < data.items.length; i++) {
               let galleryItem = document.createElement("img");
               galleryItem.classList.add("gallery-item");
               galleryItem.src = data.items[i];
