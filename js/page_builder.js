@@ -1,9 +1,12 @@
 
 // A set to track all loading promises for the initial page load.
 const initialLoadPromises = new Set();
+// A list to track all functions to be called after initial load.
+const postLoadCallbacks = [];
 
 // A function to register a promise that must complete before the page is shown.
 function registerInitialLoad(promise) {
+    console.log("Registering initial load promise...")
     initialLoadPromises.add(promise);
     // When the promise finishes, remove it from the set.
     promise.finally(() => {
@@ -11,10 +14,30 @@ function registerInitialLoad(promise) {
     });
 }
 
+// A function to register a callback that will be executed after the initial load promises are settled.
+function registerPostLoad(callback) {
+    if (typeof callback === 'function') {
+        postLoadCallbacks.push(callback);
+    } else {
+        console.error('registerPostLoad expects a function, but received:', callback);
+    }
+}
+
 // This function will be called to wait for all initial loads and then show the page.
 async function finalizePageLoad() {
+    console.log("waiting for initial promises to finish...")
     // Wait for all registered promises to settle.
     await Promise.allSettled([...initialLoadPromises]);
+    console.log("Calling post load callbacks...")
+    // Execute all post-load callbacks.
+    for (const callback of postLoadCallbacks) {
+        try {
+            callback();
+        } catch (e) {
+            console.error("Error in post-load callback:", e);
+        }
+    }
+
     // Use requestAnimationFrame to ensure the fade-in happens smoothly after all content is ready.
     document.body.style.visibility = "visible";
     

@@ -1,3 +1,6 @@
+function registerInitMap(){
+  registerPostLoad(initMap);
+}
 function initMap() {
   const mapElement = document.getElementById('map-window');
   const mapImage = document.getElementById('map-image');

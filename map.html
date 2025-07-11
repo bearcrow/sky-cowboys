@@ -5,7 +5,6 @@
     <site-head></site-head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkyCowboys Map</title>
     <style>
       #map-container {
         margin: 0;
@@ -35,10 +34,10 @@
     </style>
     <script src="js/map.js"></script>
   </head>
-  <body onload="initMap()">
+  <body onload="onPageLoad()" style="visibility:hidden">
     <header-component active-nav="map"></header-component>
     <main class="content">
-      <h1>Sky Cowboys World Map</h1>
+      <h1 class="page-heading">Sky Cowboys World Map</h1>
       <div id="map-container">
         <div id="map-window">
           <img
@@ -51,5 +50,11 @@
       </div>
     </main>
     <footer-component></footer-component>
+    <script>
+      function onPageLoad() {
+        registerInitMap();
+        finalizePageLoad();
+      }
+    </script>
   </body>
 </html>

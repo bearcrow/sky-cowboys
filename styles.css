@@ -279,7 +279,8 @@ img.gallery-item {
     text-decoration: none;
     display: inline-block;
 }
-.center-text{
+
+.page-heading{
   text-align:center;
 }
 .community-section {
