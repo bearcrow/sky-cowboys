@@ -187,7 +187,9 @@ function initMap() {
           scale = Math.min(scaleX, scaleY, 1);
 
           pointX = (viewportWidth - imageWidth * scale) / 2;
-          pointY = (viewportHeight - imageHeight * scale) / 2;
+          //don't vertically center for tall aspect ratios
+          pointY = 0;
+          //pointY = (viewportHeight - imageHeight * scale) / 2;
 
           updateTransform();
           mapImage.style.visibility = 'visible';
