@@ -43,10 +43,23 @@ async function finalizePageLoad() {
     
 }
 
-async function include(url, destination){
-  const response = await fetch(url);
-  const text = await response.text();
-  destination.innerHTML = destination.innerHTML + text;
+async function include(url, destination) {
+    const response = await fetch(url);
+    const text = await response.text();
+
+    // Use a template element to parse the HTML and handle scripts correctly
+    const template = document.createElement('template');
+    template.innerHTML = text.trim();
+    
+    // Find all script tags, create new executable ones, and replace the old ones
+    template.content.querySelectorAll('script').forEach(oldScript => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+
+    destination.appendChild(template.content);
 }
 function setNav(heading){
   // Highlight the current page's navigation button.
