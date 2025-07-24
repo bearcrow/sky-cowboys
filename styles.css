@@ -254,7 +254,10 @@ img.gallery-item {
     max-width: 1000px;
     margin: 0 auto; 
 }
-
+.reader_nav_button.disabled {
+  color: #666;
+  cursor: default;
+}
 .footer-follow-section {
     text-align: center;
     margin-right: 50px;

@@ -6,6 +6,7 @@
     <script type="text/javascript">
       chapters = null;
       chapter = null;
+      sortedChapterKeys = [];
       function goToChapter(cnum){
         window.location.href = "/reader.html?chapter="+cnum;
       }
@@ -21,16 +22,19 @@
         overlay.style.display = 'none';
         document.getElementById('overlay-image').src = '';
       }
+      
+      function updateNavButtons() {
+        const currentIndex = sortedChapterKeys.indexOf(chapter);
+        const isFirst = currentIndex <= 0;
+        const isLast = currentIndex >= sortedChapterKeys.length - 1;
 
-      function getLatestChapter(manifest) {
-        var latest_chapter = -1;
-        for (var i in manifest.chapters) {
-          if (parseInt(i) > latest_chapter) {
-            latest_chapter = i;
-          }
-        }
-        return latest_chapter;
+        document.getElementById('nav_left_top').classList.toggle('disabled', isFirst);
+        document.getElementById('nav_left_bottom').classList.toggle('disabled', isFirst);
+
+        document.getElementById('nav_right_top').classList.toggle('disabled', isLast);
+        document.getElementById('nav_right_bottom').classList.toggle('disabled', isLast);
       }
+
       function onBodyLoaded() {
         
         const myPromise = new Promise(async (resolve, reject) => {
@@ -48,12 +52,13 @@
         myPromise.then(
           function (data) {
             chapters = data.chapters;
+            sortedChapterKeys = Object.keys(chapters).map(Number).sort((a, b) => a - b);
             var urlParams = new URLSearchParams(window.location.search);
             chapter = urlParams.get("chapter");
             if (chapter == undefined) chapter = "Not Found";
             if (chapter == "latest") {
-              chapter = getLatestChapter(data);
-            }else{
+              chapter = sortedChapterKeys[sortedChapterKeys.length - 1];
+            } else {
               chapter = parseInt(chapter);
             }
             
@@ -78,6 +83,7 @@
              data.chapters[chapter].title;
             document.getElementById("chapter_title_bottom").innerText =
               data.chapters[chapter].title;
+            updateNavButtons();
             finalizePageLoad();
           },
           function (error) {
@@ -86,11 +92,16 @@
         );
       }
       function prevChapter() {
-        goToChapter(Math.max(chapter -1,0));
+        const currentIndex = sortedChapterKeys.indexOf(chapter);
+        if (currentIndex > 0) {
+          goToChapter(sortedChapterKeys[currentIndex - 1]);
+        }
       }
       function nextChapter() {
-        
-         goToChapter(Math.min(chapter +1 ,Object.keys(chapters).length));
+        const currentIndex = sortedChapterKeys.indexOf(chapter);
+        if (currentIndex < sortedChapterKeys.length - 1) {
+          goToChapter(sortedChapterKeys[currentIndex + 1]);
+        }
       }
     </script>
   </head>
@@ -99,22 +110,22 @@
     <main class="content">
       <div id="reader_content_wrap">
         <div id="top_nav" class="nav">
-          <div id="nav_left" class="inline reader_nav_button" onclick="prevChapter()">
+          <div id="nav_left_top" class="inline reader_nav_button" onclick="prevChapter()">
             &lt;
           </div>
           <h1 id="chapter_title_top" class="inline"></h1>
-          <div id="nav_right" class="inline reader_nav_button" onclick="nextChapter()">
+          <div id="nav_right_top" class="inline reader_nav_button" onclick="nextChapter()">
             &gt;
           </div>
         </div>
         <div id="chapter_content"></div>
       </div>
       <div id="bottom_nav" class="nav">
-        <div id="nav_left" class="inline reader_nav_button kiln" onclick="prevChapter()">
+        <div id="nav_left_bottom" class="inline reader_nav_button kiln" onclick="prevChapter()">
           &lt;
         </div>
         <h1 id="chapter_title_bottom" class="inline"></h1>
-        <div id="nav_right" class="inline reader_nav_button kiln" onclick="nextChapter()">
+        <div id="nav_right_bottom" class="inline reader_nav_button kiln" onclick="nextChapter()">
           &gt;
         </div>
       </div>
