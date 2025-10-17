@@ -7,7 +7,12 @@
     "1":{
       "title":"Chapter One: The Greenhorn",
       "pages":26
+    },
+    "2":{
+      "title":"Chapter Two: A New Partner",
+      "pages":32
     }
+  
   }
 
 }
