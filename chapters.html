@@ -11,7 +11,7 @@
       
       const myPromise = new Promise(async (resolve,reject) => {
         try {
-          const response = await fetch("chapters/manifest.json");
+          const response = await fetch("chapters/manifest.json?v=" + new Date().getTime());
           const data = await response.json();
           resolve(data);
         } catch (error) {
